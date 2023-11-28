@@ -1,5 +1,7 @@
+import AppStyled from "./Appstyled";
+
 const App = () => {
-  return <div>My Box App</div>;
+  return <AppStyled>My records</AppStyled>;
 };
 
 export default App;
