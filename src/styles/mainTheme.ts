@@ -1,4 +1,4 @@
-import { DefaultTheme } from "./styled";
+import { DefaultTheme } from "styled-components";
 
 const mainTheme: DefaultTheme = {
   colors: {
@@ -7,7 +7,6 @@ const mainTheme: DefaultTheme = {
     mediumLight: "#d9d9d9",
     light: "#fff",
     backDark: "#131313",
-    backSecondaryDark: "#6843bc",
     backLight: "#ffffff",
   },
   typography: {
