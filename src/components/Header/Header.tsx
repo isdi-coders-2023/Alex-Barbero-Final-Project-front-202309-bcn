@@ -1,3 +1,4 @@
+import Navigation from "../Navigation/Navigation";
 import HeaderStyled from "./HeaderSyled";
 
 const Header = () => {
@@ -9,7 +10,8 @@ const Header = () => {
         width="103"
         height="103"
         title="my-box-logo"
-      ></img>
+      />
+      <Navigation />
     </HeaderStyled>
   );
 };

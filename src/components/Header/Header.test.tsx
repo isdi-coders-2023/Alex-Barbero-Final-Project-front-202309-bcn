@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import mainTheme from "../../styles/mainTheme";
 import Header from "./Header";
+import { BrowserRouter } from "react-router-dom";
 
 describe("Given a Header component", () => {
   describe("When it's rendered", () => {
@@ -9,12 +10,14 @@ describe("Given a Header component", () => {
       const expectedLogoText = "my-box-logo";
 
       render(
-        <ThemeProvider theme={mainTheme}>
-          <Header />
-        </ThemeProvider>,
+        <BrowserRouter>
+          <ThemeProvider theme={mainTheme}>
+            <Header />
+          </ThemeProvider>
+        </BrowserRouter>,
       );
 
-      const logoElement = screen.getByTitle(expectedLogoText);
+      const logoElement = screen.getByRole("img", { name: expectedLogoText });
 
       expect(logoElement).toBeInTheDocument();
     });
