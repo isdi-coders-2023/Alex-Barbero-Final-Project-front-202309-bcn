@@ -1,7 +1,12 @@
+import Header from "../Header/Header";
 import AppStyled from "./Appstyled";
 
 const App = () => {
-  return <AppStyled>My records</AppStyled>;
+  return (
+    <>
+      <Header />
+      <AppStyled>My records</AppStyled>
+    </>
+  );
 };
-
 export default App;
