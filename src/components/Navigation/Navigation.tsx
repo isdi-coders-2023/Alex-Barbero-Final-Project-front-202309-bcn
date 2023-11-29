@@ -4,7 +4,7 @@ import NavigationStyled from "./NavigationStyled";
 const Navigation = () => {
   return (
     <NavigationStyled>
-      <ul className="nav__box">
+      <ul className="nav">
         <li>
           <NavLink className="nav__link" to="/home">
             {({ isActive }) => (

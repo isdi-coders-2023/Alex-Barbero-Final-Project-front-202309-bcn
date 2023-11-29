@@ -1,11 +1,11 @@
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import mainTheme from "../../styles/mainTheme";
+import mainTheme from "../styles/mainTheme";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { recordsReducer } from "../../store/feature/records/recordsSlice";
-import recordsMock from "./recordsMock";
+import { recordsReducer } from "../store/feature/records/recordsSlice";
+import recordsMock from "../mocks/recordsMock";
 
 const customRender = (children: React.ReactElement) => {
   const mockStore = configureStore({
