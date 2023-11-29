@@ -39,7 +39,7 @@ const RecordCard = ({
       <div className={`record__icons-box ${isActive ? "off" : ""}`}>
         <a href="/home">
           <img
-            src="./modifyRecord.webp"
+            src="modifyRecord.webp"
             alt="modify-record"
             width="62"
             height="62"
@@ -47,7 +47,7 @@ const RecordCard = ({
         </a>
         <a href="/home">
           <img
-            src="./trashCanIcon.webp"
+            src="trashCanIcon.webp"
             alt="trashCanIcon"
             width="62"
             height="62"

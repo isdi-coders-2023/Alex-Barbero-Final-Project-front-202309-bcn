@@ -10,7 +10,7 @@ const Navigation = () => {
             {({ isActive }) => (
               <img
                 alt="go-home"
-                src={isActive ? "./openBox.webp" : "./closedBox.webp"}
+                src={isActive ? "openBox.webp" : "closedBox.webp"}
                 width={isActive ? "54" : "46"}
                 height={isActive ? "49" : "42"}
               />
@@ -22,7 +22,7 @@ const Navigation = () => {
             {({ isActive }) => (
               <img
                 alt="add-new"
-                src={isActive ? "./addOn.webp" : "./addOff.webp"}
+                src={isActive ? "addOn.webp" : "addOff.webp"}
                 width={isActive ? "53" : "39"}
                 height={isActive ? "49" : "36"}
               />

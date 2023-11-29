@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { loadRecordsActionCreator } from "../../store/feature/records/recordsSlice";
 import recordsMock from "../../mocks/recordsMock";
-import AppStyled from "./AppStyled";
+import AppStyled from "./Papafrita";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const App = () => {
       <AppStyled>
         <img
           className="background-image"
-          src="./background.jpg"
+          src="background.jpg"
           alt="background"
         />
         <Routes>
