@@ -22,7 +22,7 @@ const App = () => {
       <AppStyled>
         <img
           className="background-image"
-          src="./background.jpg"
+          src="background.jpg"
           alt="background"
         />
         <Routes>

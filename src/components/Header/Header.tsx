@@ -4,7 +4,7 @@ import HeaderStyled from "./HeaderStyled";
 const Header = () => {
   return (
     <HeaderStyled>
-      <img src="./resizedLogo.webp" alt="my box logo" width="75" height="75" />
+      <img src="resizedLogo.webp" alt="my box logo" width="75" height="75" />
       <Navigation />
     </HeaderStyled>
   );
