@@ -1,4 +1,5 @@
 interface recordStructure {
+  id: string;
   bandName: string;
   albumName: string;
   frontCover: string;

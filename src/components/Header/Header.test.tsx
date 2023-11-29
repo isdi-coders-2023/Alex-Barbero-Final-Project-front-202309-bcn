@@ -1,21 +1,13 @@
-import { render, screen } from "@testing-library/react";
-import { ThemeProvider } from "styled-components";
-import mainTheme from "../../styles/mainTheme";
+import { screen } from "@testing-library/react";
 import Header from "./Header";
-import { BrowserRouter } from "react-router-dom";
+import customRender from "../../mocks/utils/customRender";
 
 describe("Given a Header component", () => {
   describe("When it's rendered", () => {
     test("Then it should show an image with 'my-box-logo' accessible text", () => {
       const expectedLogoText = "my-box-logo";
 
-      render(
-        <BrowserRouter>
-          <ThemeProvider theme={mainTheme}>
-            <Header />
-          </ThemeProvider>
-        </BrowserRouter>,
-      );
+      customRender(<Header />);
 
       const logoElement = screen.getByRole("img", { name: expectedLogoText });
 

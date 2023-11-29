@@ -2,8 +2,9 @@ import recordStructure from "../../store/feature/records/types";
 
 const recordsMock: recordStructure[] = [
   {
-    bandName: "band1;",
-    albumName: "album1;",
+    id: "id1",
+    bandName: "band1",
+    albumName: "album1",
     frontCover: "front1",
     backCover: "back1",
     printImage: "print1",
@@ -12,8 +13,9 @@ const recordsMock: recordStructure[] = [
     trackList: "track1",
   },
   {
-    bandName: "band2;",
-    albumName: "album2;",
+    id: "id2",
+    bandName: "band2",
+    albumName: "album2",
     frontCover: "front2",
     backCover: "back2",
     printImage: "print2",
