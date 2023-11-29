@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import Navigation from "./Navigation";
-import customRender from "../../mocks/utils/customRender";
+import customRender from "../../test-utils/customRender";
 
 describe("Given a Navigation component", () => {
   describe("When it's rendered", () => {
@@ -9,9 +9,10 @@ describe("Given a Navigation component", () => {
 
       customRender(<Navigation />);
 
-      const iconElement = screen.getByRole("img", { name: expectedImageText });
+      const iconElement = screen.getByRole("link", { name: expectedImageText });
 
       expect(iconElement).toBeInTheDocument();
+      expect(iconElement).toHaveAttribute("href", "/home");
     });
   });
 });

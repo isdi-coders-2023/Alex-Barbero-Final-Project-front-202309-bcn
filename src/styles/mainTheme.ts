@@ -10,7 +10,7 @@ const mainTheme: DefaultTheme = {
     backLight: "#ffffff",
   },
   typography: {
-    mainFontFamily: "'Jaldi', serif",
+    mainFontFamily: "'Jaldi', sans-serif;",
     contentFontFamily: "'Keania One, serif",
     mainSize: "32px",
     principalInfoSize: "24px",

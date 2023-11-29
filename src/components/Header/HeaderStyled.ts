@@ -7,9 +7,11 @@ const HeaderStyled = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 105px;
+  height: 90px;
   padding: 20px;
   background-color: ${({ theme }) => theme.colors.dark};
   color: ${({ theme }) => theme.colors.light};
+  z-index: 3;
 `;
+
 export default HeaderStyled;

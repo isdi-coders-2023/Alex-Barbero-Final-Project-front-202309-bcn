@@ -1,7 +1,7 @@
 import { screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import App from "./App";
-import customRender from "../../mocks/utils/customRender";
+import customRender from "../../test-utils/customRender";
 
 describe("Given an App component", () => {
   describe("When it's rendered", () => {

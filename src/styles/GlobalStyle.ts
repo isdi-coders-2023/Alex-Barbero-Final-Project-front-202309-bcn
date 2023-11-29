@@ -14,6 +14,7 @@ html {
 
 body {
   margin: 0;
+  color:${({ theme }) => theme.colors.light};
   background-color: ${({ theme }) => theme.colors.backLight}
 }
 
@@ -43,9 +44,17 @@ input {
   border-radius: 5px;
 }
 
+img {
+  max-width: 100%;
+}
+
 h1,
 h2 {
   margin: 0;
+  }
+
+  .off{
+    visibility:hidden;
   }
 `;
 
