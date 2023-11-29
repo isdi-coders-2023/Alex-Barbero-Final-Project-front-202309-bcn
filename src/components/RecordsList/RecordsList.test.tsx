@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../mocks/utils/customRender";
-import recordsMock from "../../mocks/utils/recordsMock";
+import customRender from "../../test-utils/customRender";
+import recordsMock from "../../mocks/recordsMock";
 import RecordsList from "./RecordsList";
 
 describe("Given a RecordsList component", () => {

@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../mocks/utils/customRender";
+import customRender from "../../test-utils/customRender";
 import RecordsPage from "./RecordsPage";
 
 describe("Given a RecordsPage", () => {
