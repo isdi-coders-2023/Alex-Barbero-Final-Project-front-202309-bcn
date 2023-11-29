@@ -7,8 +7,8 @@ const Header = () => {
       <img
         src="./resizedLogo.webp"
         alt="my-box-logo"
-        width="103"
-        height="103"
+        width="75"
+        height="75"
         title="my-box-logo"
       />
       <Navigation />
