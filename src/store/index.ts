@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { recordsReducer } from "./feature/records/recordsSlice";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    recordsState: recordsReducer,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;
