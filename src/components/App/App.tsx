@@ -20,6 +20,11 @@ const App = () => {
     <>
       <Header />
       <AppStyled>
+        <img
+          className="background-image"
+          src="./background.jpg"
+          alt="background"
+        />
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<RecordsPage />} />

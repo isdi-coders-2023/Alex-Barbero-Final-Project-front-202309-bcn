@@ -7,6 +7,25 @@ const RecordsListStyled = styled.ul`
   margin-top: 20px;
   justify-items: center;
   justify-content: space-around;
+  position: relative;
+
+  .footer-box {
+    &--up {
+      width: 320px;
+      height: auto;
+      position: fixed;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    &--down {
+      width: 320px;
+      height: auto;
+      position: fixed;
+      bottom: 0;
+      z-index: 3;
+    }
+  }
 
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
