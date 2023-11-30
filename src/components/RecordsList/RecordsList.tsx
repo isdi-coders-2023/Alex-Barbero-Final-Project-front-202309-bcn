@@ -5,7 +5,8 @@ import RecordsListStyled from "./RecordsListStyled";
 interface RecordsListProps {
   records: recordStructure[];
 }
-const RecordsList = ({ records }: RecordsListProps) => {
+
+const RecordsList = ({ records }: RecordsListProps): React.ReactElement => {
   return (
     <RecordsListStyled>
       {records.map((record) => (
@@ -14,14 +15,14 @@ const RecordsList = ({ records }: RecordsListProps) => {
         </li>
       ))}
       <img
-        className="footer-box--up"
+        className="footer-box"
         src="./upperBox.png"
         alt="footer box up"
         height="344"
         width="390"
       />
       <img
-        className="footer-box--down"
+        className="footer-box footer-box--down"
         src="./footerBox.png"
         alt="footer box down"
         height="215"

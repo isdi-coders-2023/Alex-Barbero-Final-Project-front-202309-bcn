@@ -11,10 +11,10 @@ describe("Given a recordsReducer", () => {
       const expectedLoadedRecords: RecordsStateStructure = {
         records: recordsMock,
       };
-      const previousState: RecordsStateStructure = { records: [] };
+      const currentState: RecordsStateStructure = { records: [] };
 
       const loadedRecords = recordsReducer(
-        previousState,
+        currentState,
         loadRecordsActionCreator(recordsMock),
       );
 

@@ -51,11 +51,11 @@ img {
 h1,
 h2 {
   margin: 0;
-  }
+}
 
-  .off{
-    visibility:hidden;
-  }
+.off {
+  visibility:hidden;
+}
 `;
 
 export default GlobalStyle;

@@ -7,7 +7,7 @@ const mainTheme: DefaultTheme = {
     mediumLight: "#d9d9d9",
     light: "#fff",
     backDark: "#131313",
-    backLight: "#ffffff",
+    backLight: "#fff",
   },
   typography: {
     mainFontFamily: "'Jaldi', sans-serif;",

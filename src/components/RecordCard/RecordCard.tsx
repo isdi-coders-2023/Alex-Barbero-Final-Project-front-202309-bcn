@@ -8,14 +8,15 @@ interface RecordCardProps {
 
 const RecordCard = ({
   record: { albumName, bandName, frontCover },
-}: RecordCardProps) => {
+}: RecordCardProps): React.ReactElement => {
   const [isActive, setIsActive] = useState(true);
+
+  const toggleIconsVisibility = () => {
+    setIsActive(!isActive);
+  };
+
   return (
-    <RecordCardStyled
-      onClick={() => {
-        setIsActive(!isActive);
-      }}
-    >
+    <RecordCardStyled onClick={toggleIconsVisibility}>
       <img
         className="record__background"
         src="./record.png"
@@ -43,7 +44,7 @@ const RecordCard = ({
             alt="modify-record"
             width="62"
             height="62"
-          ></img>
+          />
         </a>
         <a href="/home">
           <img
