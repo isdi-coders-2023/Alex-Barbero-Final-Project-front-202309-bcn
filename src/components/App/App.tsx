@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { loadRecordsActionCreator } from "../../store/feature/records/recordsSlice";
 import recordsMock from "../../mocks/recordsMock";
-import AppStyled from "./Papafrita";
+import AppStyled from "./AppStyled";
 
 const App = () => {
   const dispatch = useDispatch();
