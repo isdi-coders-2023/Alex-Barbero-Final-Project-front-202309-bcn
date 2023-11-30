@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import NavigationStyled from "./NavigationStyled";
 
-const Navigation = () => {
+const Navigation = (): React.ReactElement => {
   return (
     <NavigationStyled>
       <ul className="nav">

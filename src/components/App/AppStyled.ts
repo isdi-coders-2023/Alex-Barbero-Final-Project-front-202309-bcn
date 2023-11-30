@@ -2,12 +2,15 @@ import styled from "styled-components";
 
 const AppStyled = styled.main`
   padding-top: 100px;
-  height: 100vh;
 
-  .background-image {
-    position: fixed;
-    opacity: 0.5;
+  .background {
     z-index: -1;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-image: url(./background.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 `;
 
