@@ -4,27 +4,24 @@ import RecordsPage from "../../pages/RecordsPage/RecordsPage";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { loadRecordsActionCreator } from "../../store/feature/records/recordsSlice";
-import recordsMock from "../../mocks/recordsMock";
 import AppStyled from "./AppStyled";
+import useRecordsApi from "../../hooks/useRecordsApi";
 
-const App = () => {
+const App = (): React.ReactElement => {
   const dispatch = useDispatch();
+  const { getRecords } = useRecordsApi();
 
   useEffect(() => {
     (async () => {
-      dispatch(loadRecordsActionCreator(recordsMock));
+      dispatch(loadRecordsActionCreator(await getRecords()));
     })();
-  }, [dispatch]);
+  }, [dispatch, getRecords]);
 
   return (
     <>
       <Header />
       <AppStyled>
-        <img
-          className="background-image"
-          src="background.jpg"
-          alt="background"
-        />
+        <div className="background" />
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<RecordsPage />} />
