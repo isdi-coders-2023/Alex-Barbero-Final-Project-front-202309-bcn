@@ -10,19 +10,12 @@ const RecordsListStyled = styled.ul`
   position: relative;
 
   .footer-box {
-    &--up {
-      width: 320px;
-      height: auto;
-      position: fixed;
-      bottom: 0;
-      z-index: -1;
-    }
+    width: 320px;
+    height: auto;
+    position: fixed;
+    bottom: 0;
 
     &--down {
-      width: 320px;
-      height: auto;
-      position: fixed;
-      bottom: 0;
       z-index: 3;
     }
   }

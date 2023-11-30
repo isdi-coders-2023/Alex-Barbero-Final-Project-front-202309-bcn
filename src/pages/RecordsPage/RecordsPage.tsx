@@ -2,7 +2,7 @@ import RecordsList from "../../components/RecordsList/RecordsList";
 import { useAppSelector } from "../../store/hooks";
 import RecordsPageStyled from "./RecordsPageStyled";
 
-const RecordsPage = () => {
+const RecordsPage = (): React.ReactElement => {
   const records = useAppSelector((state) => state.recordsState.records);
 
   return (

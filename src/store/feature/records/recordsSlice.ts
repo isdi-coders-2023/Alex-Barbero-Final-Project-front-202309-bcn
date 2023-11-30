@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import recordStructure from "./types";
+import RecordStructure from "./types";
 
 export interface RecordsStateStructure {
-  records: recordStructure[];
+  records: RecordStructure[];
 }
 
 const initialState: RecordsStateStructure = { records: [] };
@@ -13,7 +13,7 @@ const recordsSlice = createSlice({
   reducers: {
     loadRecords: (
       currentState: RecordsStateStructure,
-      action: PayloadAction<recordStructure[]>,
+      action: PayloadAction<RecordStructure[]>,
     ): RecordsStateStructure => ({
       ...currentState,
       records: action.payload,
