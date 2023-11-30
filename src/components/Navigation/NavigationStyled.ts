@@ -10,6 +10,9 @@ const NavigationStyled = styled.nav`
 
     &__link {
       cursor: pointer;
+      display: flex;
+      justify-content: center;
+      width: 60px;
     }
   }
 `;

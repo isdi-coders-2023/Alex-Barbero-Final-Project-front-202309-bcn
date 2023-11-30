@@ -1,4 +1,4 @@
-interface recordStructure {
+interface RecordStructure {
   id: string;
   bandName: string;
   albumName: string;
@@ -10,4 +10,4 @@ interface recordStructure {
   trackList: string;
 }
 
-export default recordStructure;
+export default RecordStructure;

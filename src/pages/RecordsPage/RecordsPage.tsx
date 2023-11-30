@@ -7,7 +7,7 @@ const RecordsPage = () => {
 
   return (
     <RecordsPageStyled>
-      <h1>My records</h1>
+      <h1 className="main-title">My records</h1>
       <RecordsList records={records} />
     </RecordsPageStyled>
   );

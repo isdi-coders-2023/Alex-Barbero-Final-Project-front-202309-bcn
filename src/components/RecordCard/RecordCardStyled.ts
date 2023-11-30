@@ -22,7 +22,7 @@ const RecordCardStyled = styled.article`
       overflow-wrap: anywhere;
       border-radius: 112px 112px 0 0;
       display: flex;
-      padding: 10px;
+      padding: 20px 10px 5px 10px;
       align-items: center;
       flex-direction: column;
     }
@@ -32,6 +32,7 @@ const RecordCardStyled = styled.article`
       font-weight: 600;
       font-size: ${({ theme }) => theme.typography.principalInfoSize};
       text-shadow: 0px 0px 5px #000;
+      text-align: center;
     }
 
     &__album {
@@ -39,6 +40,7 @@ const RecordCardStyled = styled.article`
       font-weight: 400;
       font-size: ${({ theme }) => theme.typography.detailInfoSize};
       text-shadow: 0px 0px 5px #000;
+      text-align: center;
     }
 
     &__poster {
