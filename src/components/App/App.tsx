@@ -13,7 +13,8 @@ const App = (): React.ReactElement => {
 
   useEffect(() => {
     (async () => {
-      dispatch(loadRecordsActionCreator((await getRecords()).records));
+      const { records } = await getRecords();
+      dispatch(loadRecordsActionCreator(records));
     })();
   }, [dispatch, getRecords]);
 
