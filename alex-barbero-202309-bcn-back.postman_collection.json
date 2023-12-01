@@ -1,0 +1,50 @@
+{
+  "info": {
+    "_postman_id": "ec6683ca-eba0-4aaa-a0e1-84726f0eb8e3",
+    "name": "alex-barbero-202309-bcn-back",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "20079023"
+  },
+  "item": [
+    {
+      "name": "https://alex-barbero-202309-bcn-back.onrender.com/",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\" : \"lililili\",\r\n    \"password\" : \"gxcgx\",\r\n    \"username\" : \"\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://alex-barbero-202309-bcn-back.onrender.com/",
+          "protocol": "https",
+          "host": ["alex-barbero-202309-bcn-back", "onrender", "com"],
+          "path": [""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "https://alex-barbero-202309-bcn-back.onrender.com/records",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://alex-barbero-202309-bcn-back.onrender.com/records",
+          "protocol": "https",
+          "host": ["alex-barbero-202309-bcn-back", "onrender", "com"],
+          "path": ["records"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
