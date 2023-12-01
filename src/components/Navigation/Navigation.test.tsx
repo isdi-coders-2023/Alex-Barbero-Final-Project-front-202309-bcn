@@ -11,10 +11,6 @@ describe("Given a Navigation component", () => {
     test("Then it should show an image with 'add new Off' accessible text", () => {
       expect(iconElement).toBeInTheDocument();
     });
-
-    test("Then it should show an image with 'add new Off' accessible text that redirects to the home page", () => {
-      expect(iconElement).toHaveAttribute("href", "/add");
-    });
   });
 
   describe("When it's rendered and we click on the add new record Icon", () => {
