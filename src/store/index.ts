@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { recordsReducer } from "./feature/records/recordsSlice";
+import { uiReducer } from "./feature/ui/uiSlice";
 
 export const store = configureStore({
   reducer: {
     recordsState: recordsReducer,
+    uiState: uiReducer,
   },
 });
 
