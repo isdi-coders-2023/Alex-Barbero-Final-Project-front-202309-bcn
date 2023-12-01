@@ -14,6 +14,7 @@ const RecordCardStyled = styled.article`
       position: absolute;
       border-radius: 50%;
       box-shadow: -10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+      z-index: 1;
     }
 
     &__vynil {

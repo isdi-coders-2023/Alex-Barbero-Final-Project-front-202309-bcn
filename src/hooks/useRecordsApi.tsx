@@ -2,14 +2,18 @@ import { useCallback } from "react";
 import RecordStructure from "../store/feature/records/types";
 import axios from "axios";
 
-const useRecordsApi = () => {
-  const apiUrl = import.meta.env.VITE_API_URL;
+interface UseRecordsApiStructure {
+  getRecords: () => Promise<RecordStructure[]>;
+}
 
+const useRecordsApi = (): UseRecordsApiStructure => {
   const getRecords = useCallback(async (): Promise<RecordStructure[]> => {
-    const { data: records } = await axios.get(`${apiUrl}/records`);
+    axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
-    return records.records;
-  }, [apiUrl]);
+    const { data: records } = await axios.get<RecordStructure[]>("/records");
+
+    return records;
+  }, []);
 
   return {
     getRecords,
