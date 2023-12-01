@@ -12,7 +12,6 @@ const RecordCard = ({
   const [isActive, setIsActive] = useState(false);
 
   const toggleIconsVisibility = () => {
-    console.log("Clickado!");
     setIsActive(!isActive);
   };
 
