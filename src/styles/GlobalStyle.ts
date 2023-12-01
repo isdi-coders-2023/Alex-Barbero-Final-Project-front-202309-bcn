@@ -54,7 +54,7 @@ h2 {
 }
 
 .off {
-  visibility:hidden;
+  display:none;
 }
 `;
 

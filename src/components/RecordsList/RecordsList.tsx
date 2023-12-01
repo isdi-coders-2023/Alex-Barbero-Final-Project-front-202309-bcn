@@ -1,12 +1,10 @@
-import recordStructure from "../../store/feature/records/types";
+import { useAppSelector } from "../../store/hooks";
 import RecordCard from "../RecordCard/RecordCard";
 import RecordsListStyled from "./RecordsListStyled";
 
-interface RecordsListProps {
-  records: recordStructure[];
-}
+const RecordsList = (): React.ReactElement => {
+  const records = useAppSelector((state) => state.recordsState.records);
 
-const RecordsList = ({ records }: RecordsListProps): React.ReactElement => {
   return (
     <RecordsListStyled>
       {records.map((record) => (

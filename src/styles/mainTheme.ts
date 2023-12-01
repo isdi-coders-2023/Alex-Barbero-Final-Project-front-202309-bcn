@@ -6,6 +6,7 @@ const mainTheme: DefaultTheme = {
     dark: "#2f2f2f",
     mediumLight: "#d9d9d9",
     light: "#fff",
+    black: "#000",
     backDark: "#131313",
     backLight: "#fff",
   },

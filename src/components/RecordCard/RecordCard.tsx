@@ -9,9 +9,10 @@ interface RecordCardProps {
 const RecordCard = ({
   record: { albumName, bandName, frontCover },
 }: RecordCardProps): React.ReactElement => {
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
 
   const toggleIconsVisibility = () => {
+    console.log("Clickado!");
     setIsActive(!isActive);
   };
 
@@ -35,21 +36,22 @@ const RecordCard = ({
           alt={albumName}
           width="323"
           height="323"
+          title={`record ${bandName}`}
         />
       </div>
-      <div className={`record__icons-box ${isActive ? "off" : ""}`}>
-        <a href="/home">
+      <div className="record__icons-box">
+        <a className={isActive ? "" : "off"} href="/home">
           <img
             src="modifyRecord.webp"
-            alt="modify-record"
+            alt={isActive ? "modify On" : "modify Off"}
             width="62"
             height="62"
           />
         </a>
-        <a href="/home">
+        <a className={isActive ? "" : "off"} href="/home">
           <img
             src="trashCanIcon.webp"
-            alt="trashCanIcon"
+            alt={isActive ? "delete On" : "delete Off"}
             width="62"
             height="62"
           ></img>
