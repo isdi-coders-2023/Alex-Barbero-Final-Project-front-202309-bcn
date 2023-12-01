@@ -1,12 +1,12 @@
 import { renderHook } from "@testing-library/react";
 import recordsMock from "../mocks/recordsMock";
-import RecordStructure from "../store/feature/records/types";
 import useRecordsApi from "./useRecordsApi";
+import { RecordsStateStructure } from "../store/feature/records/recordsSlice";
 
 describe("Given a custom hook", () => {
   describe("When it fetches Records from the API", () => {
     test("It should return some Records", async () => {
-      const expectedRecords: RecordStructure[] = recordsMock;
+      const expectedRecords: RecordsStateStructure = { records: recordsMock };
 
       const { result } = renderHook(() => useRecordsApi());
 
