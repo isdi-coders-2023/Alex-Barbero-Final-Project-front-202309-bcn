@@ -1,18 +1,33 @@
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import Navigation from "./Navigation";
 import customRender from "../../test-utils/customRender";
+import userEvent from "@testing-library/user-event";
 
 describe("Given a Navigation component", () => {
   describe("When it's rendered", () => {
-    test("Then it should show an image with 'go-home' accessible text", () => {
-      const expectedImageText = "go-home";
+    customRender(<Navigation />);
+    const iconElement = screen.getByRole("link", { name: "add new Off" });
 
+    test("Then it should show an image with 'add new Off' accessible text", () => {
+      expect(iconElement).toBeInTheDocument();
+    });
+
+    test("Then it should show an image with 'add new Off' accessible text that redirects to the home page", () => {
+      expect(iconElement).toHaveAttribute("href", "/add");
+    });
+  });
+
+  describe("When it's rendered and we click on the add new record Icon", () => {
+    test("Then it should show an image with 'add new On' accessible text", async () => {
       customRender(<Navigation />);
 
-      const iconElement = screen.getByRole("link", { name: expectedImageText });
+      userEvent.click(screen.getByRole("link", { name: "add new Off" }));
 
-      expect(iconElement).toBeInTheDocument();
-      expect(iconElement).toHaveAttribute("href", "/home");
+      await waitFor(() => {
+        expect(
+          screen.getByRole("link", { name: "add new On" }),
+        ).toBeInTheDocument();
+      });
     });
   });
 });

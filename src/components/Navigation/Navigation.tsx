@@ -9,7 +9,8 @@ const Navigation = (): React.ReactElement => {
           <NavLink className="nav__link" to="/home">
             {({ isActive }) => (
               <img
-                alt="go-home"
+                aria-label={isActive ? "go home On" : "go home Off"}
+                alt={isActive ? "go home On" : "go home Off"}
                 src={isActive ? "openBox.webp" : "closedBox.webp"}
                 width={isActive ? "54" : "46"}
                 height={isActive ? "49" : "42"}
@@ -21,7 +22,8 @@ const Navigation = (): React.ReactElement => {
           <NavLink className="nav__link" to="/add">
             {({ isActive }) => (
               <img
-                alt="add-new"
+                aria-label={isActive ? "add new On" : "add new Off"}
+                alt={isActive ? "add new On" : "add new Off"}
                 src={isActive ? "addOn.webp" : "addOff.webp"}
                 width={isActive ? "53" : "39"}
                 height={isActive ? "49" : "36"}

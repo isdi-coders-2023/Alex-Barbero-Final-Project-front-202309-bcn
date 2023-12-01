@@ -6,6 +6,6 @@ const mock = recordsMock;
 
 export const handlers = [
   http.get(`${apiUrl}/records`, async () => {
-    return HttpResponse.json(mock);
+    return HttpResponse.json({ records: mock });
   }),
 ];
