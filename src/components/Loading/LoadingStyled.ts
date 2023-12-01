@@ -17,8 +17,11 @@ const LoadingStyled = styled.section`
       height: 230px;
     }
     &__text {
+      width: 80%;
       margin: 20px;
-      color: ${({ theme }) => theme.colors.black};
+      font-weight: 800;
+      text-align: center;
+      color: #000;
       text-transform: uppercase;
     }
   }

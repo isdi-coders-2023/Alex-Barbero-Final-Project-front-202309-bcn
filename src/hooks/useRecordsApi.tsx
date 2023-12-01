@@ -7,6 +7,7 @@ import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../store/feature/ui/uiSlice";
+import { useNavigate } from "react-router-dom";
 
 interface UseRecordsApiStructure {
   getRecords: () => Promise<RecordsStateStructure>;
@@ -14,20 +15,27 @@ interface UseRecordsApiStructure {
 
 const useRecordsApi = (): UseRecordsApiStructure => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getRecords = useCallback(async (): Promise<RecordsStateStructure> => {
     axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
-    dispatch(showLoadingActionCreator());
+    try {
+      dispatch(showLoadingActionCreator());
 
-    const { data: records } = await axios.get<{ records: RecordStructure[] }>(
-      "/records",
-    );
+      const { data: records } = await axios.get<{ records: RecordStructure[] }>(
+        "/records",
+      );
 
-    dispatch(hideLoadingActionCreator());
+      dispatch(hideLoadingActionCreator());
 
-    return records;
-  }, [dispatch]);
+      return records;
+    } catch (error) {
+      navigate("/not-found");
+      dispatch(hideLoadingActionCreator());
+      throw (error as Error).message;
+    }
+  }, [dispatch, navigate]);
 
   return {
     getRecords,

@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
 const AppStyled = styled.main`
-  padding-top: 100px;
-
   .background {
+    margin-top: 90px;
     z-index: -1;
     width: 100%;
     height: 100vh;
