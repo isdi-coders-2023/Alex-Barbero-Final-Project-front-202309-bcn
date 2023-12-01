@@ -1,14 +1,14 @@
-import recordStructure from "../store/feature/records/types";
+import RecordStructure from "../store/feature/records/types";
 
-const recordsMock: recordStructure[] = [
+const recordsMock: RecordStructure[] = [
   {
     id: "id1",
     bandName: "Los chunguitos",
     albumName: "Dame veneno",
     frontCover: "https://i.ibb.co/ssBNRbH/kvelertak.webp",
-    backCover: "back.png",
-    printImage: "print.png",
-    cookieImage: "cookie.png",
+    backCover: "back1.png",
+    printImage: "print1.png",
+    cookieImage: "cookie1.png",
     description: "Ke pum ke pam triki taun",
     trackList: "Uan, chu, zri",
   },
@@ -17,9 +17,9 @@ const recordsMock: recordStructure[] = [
     bandName: "Ejtopa",
     albumName: "Fui alaorilla del rio y mi ketabah mu chola",
     frontCover: "https://i.ibb.co/MPScWNn/gel.webp",
-    backCover: "back.png",
-    printImage: "print.png",
-    cookieImage: "cookie.png",
+    backCover: "back2.png",
+    printImage: "print2.png",
+    cookieImage: "cookie2.png",
     description: "Lo etopa son lo ma grande",
     trackList: "Uan, chu, zri",
   },
