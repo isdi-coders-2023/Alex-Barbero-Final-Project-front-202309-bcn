@@ -5,6 +5,7 @@ const RecordsListStyled = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 125px;
+  margin-bottom: 150px;
   justify-items: center;
   justify-content: space-around;
   position: relative;

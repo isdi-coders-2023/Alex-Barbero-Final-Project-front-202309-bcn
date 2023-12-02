@@ -8,7 +8,7 @@ const RecordsList = (): React.ReactElement => {
   return (
     <RecordsListStyled>
       {records.map((record) => (
-        <li key={record.id}>
+        <li key={record._id}>
           <RecordCard record={record} />
         </li>
       ))}

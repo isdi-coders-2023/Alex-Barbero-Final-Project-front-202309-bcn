@@ -8,11 +8,11 @@ describe("Given a RecordsList component", () => {
       const expectedHeadingTitle = "Los chunguitos";
       customRender(<RecordsList />);
 
-      const normieHeadingElement = screen.getByRole("heading", {
+      const recordHeadingElement = screen.getByRole("heading", {
         name: expectedHeadingTitle,
       });
 
-      expect(normieHeadingElement).toBeInTheDocument();
+      expect(recordHeadingElement).toBeInTheDocument();
     });
   });
 });
