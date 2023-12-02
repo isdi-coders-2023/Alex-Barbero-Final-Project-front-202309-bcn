@@ -35,7 +35,13 @@ a {
     font-size: 20px;
 }
 
-button,
+button {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor:pointer;
+}
+
 input {
   font-family: inherit;
   text-align: center;

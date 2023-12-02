@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 interface UseRecordsApiStructure {
   getRecords: () => Promise<RecordsStateStructure>;
+  deleteRecord: (recordId: string) => Promise<void>;
 }
 
 const useRecordsApi = (): UseRecordsApiStructure => {
@@ -37,8 +38,30 @@ const useRecordsApi = (): UseRecordsApiStructure => {
     }
   }, [dispatch, navigate]);
 
+  const deleteRecord = useCallback(
+    async (recordId: string): Promise<void> => {
+      axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+
+      try {
+        dispatch(showLoadingActionCreator());
+
+        await axios.delete<{
+          message: string;
+        }>(`/records/${recordId}`);
+
+        dispatch(hideLoadingActionCreator());
+      } catch (error) {
+        navigate("/not-found");
+        dispatch(hideLoadingActionCreator());
+        throw (error as Error).message;
+      }
+    },
+    [dispatch, navigate],
+  );
+
   return {
     getRecords,
+    deleteRecord,
   };
 };
 

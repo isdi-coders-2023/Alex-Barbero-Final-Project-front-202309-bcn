@@ -1,18 +1,30 @@
 import { useState } from "react";
 import recordStructure from "../../store/feature/records/types";
 import RecordCardStyled from "./RecordCardStyled";
+import { useDispatch } from "react-redux";
+import { deleteRecordActionCreator } from "../../store/feature/records/recordsSlice";
+import useRecordsApi from "../../hooks/useRecordsApi";
 
 interface RecordCardProps {
   record: recordStructure;
 }
 
 const RecordCard = ({
-  record: { albumName, bandName, frontCover },
+  record: { albumName, bandName, frontCover, _id },
 }: RecordCardProps): React.ReactElement => {
+  const dispatch = useDispatch();
   const [isActive, setIsActive] = useState(false);
+  const { deleteRecord } = useRecordsApi();
 
   const toggleIconsVisibility = () => {
     setIsActive(!isActive);
+  };
+
+  const deleteCurrentRecord = (): void => {
+    (async () => {
+      await deleteRecord(_id);
+      dispatch(deleteRecordActionCreator(_id));
+    })();
   };
 
   return (
@@ -47,14 +59,14 @@ const RecordCard = ({
             height="62"
           />
         </a>
-        <a className={isActive ? "" : "off"} href="/home">
+        <button onClick={deleteCurrentRecord} className={isActive ? "" : "off"}>
           <img
             src="trashCanIcon.webp"
             alt={isActive ? "delete On" : "delete Off"}
             width="62"
             height="62"
           ></img>
-        </a>
+        </button>
       </div>
     </RecordCardStyled>
   );
