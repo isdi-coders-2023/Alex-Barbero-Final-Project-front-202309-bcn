@@ -4,7 +4,7 @@ const RecordsListStyled = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 125px;
   justify-items: center;
   justify-content: space-around;
   position: relative;

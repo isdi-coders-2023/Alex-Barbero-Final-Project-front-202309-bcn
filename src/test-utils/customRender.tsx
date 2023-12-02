@@ -35,7 +35,16 @@ const customRender = (children: React.ReactElement) => {
 };
 
 export const providerWrapper = ({ children }: PropsWithChildren) => {
-  return <Provider store={mockStore}>{children}</Provider>;
+  return (
+    <BrowserRouter>
+      <Provider store={mockStore}>
+        <ThemeProvider theme={mainTheme}>
+          <GlobalStyle />
+          {children}
+        </ThemeProvider>
+      </Provider>
+    </BrowserRouter>
+  );
 };
 
 export default customRender;

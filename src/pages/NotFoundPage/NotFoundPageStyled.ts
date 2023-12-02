@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const LoadingStyled = styled.section`
+const NotFoundPageStyled = styled.section`
   width: 100%;
   height: 100%;
   position: fixed;
@@ -8,14 +8,14 @@ const LoadingStyled = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #d3d3d3b3;
-  z-index: 4;
+  background: rgba(143, 46, 46, 0.7);
 
-  .loading {
+  .not-found {
     &__image {
       width: 230px;
       height: 230px;
     }
+
     &__text {
       width: 80%;
       margin: 20px;
@@ -27,4 +27,4 @@ const LoadingStyled = styled.section`
   }
 `;
 
-export default LoadingStyled;
+export default NotFoundPageStyled;
