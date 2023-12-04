@@ -16,9 +16,18 @@ const LoadingStyled = styled.section`
       width: 230px;
       height: 230px;
     }
+
+    &__vynil {
+      border: none;
+      background: none;
+
+      :hover {
+        display: none;
+      }
+    }
     &__text {
       width: 80%;
-      margin: 20px;
+      margin-top: -20px;
       font-weight: 800;
       text-align: center;
       color: #000;

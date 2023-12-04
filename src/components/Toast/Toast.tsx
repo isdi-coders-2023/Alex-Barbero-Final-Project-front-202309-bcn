@@ -15,10 +15,6 @@ const Toast = () => {
     }
   }, [feedBackToast]);
 
-  const toastIt = () => {
-    toast("Ke pacha loco!");
-  };
-
   return (
     <>
       <ToastContainer
@@ -33,7 +29,6 @@ const Toast = () => {
         pauseOnHover
         theme="light"
       />
-      <button onClick={toastIt}>Toast!</button>
     </>
   );
 };

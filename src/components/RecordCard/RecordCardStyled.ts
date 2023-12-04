@@ -7,6 +7,27 @@ const RecordCardStyled = styled.article`
   margin-top: 20px;
   position: relative;
 
+  @keyframes appear {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    60% {
+      transform: scale(1.05);
+    }
+
+    80% {
+      transform: scale(0.95);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
   .record {
     &__background {
       width: 195px;
@@ -45,9 +66,18 @@ const RecordCardStyled = styled.article`
     }
 
     &__poster {
+      transition: all 300ms;
       z-index: 1;
       height: 200px;
       width: 200px;
+      box-shadow: -10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    &__poster--big {
+      transition: all 300ms;
+      z-index: 1;
+      height: 210px;
+      width: 210px;
       box-shadow: -10px 10px 10px 0px rgba(0, 0, 0, 0.5);
     }
 
@@ -59,11 +89,19 @@ const RecordCardStyled = styled.article`
     &__icons-box {
       z-index: 2;
       display: flex;
+      flex-direction: column;
       position: absolute;
       bottom: 20px;
       right: -25px;
       gap: 10px;
+    }
+
+    &__button {
+      transition: all 200ms;
       flex-direction: column;
+      animation-name: appear;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
     }
   }
 `;
