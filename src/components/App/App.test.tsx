@@ -25,7 +25,7 @@ describe("Given an App component", () => {
   });
 
   describe("When it renders Los chunguitos and it's delete button is clickedd", () => {
-    test.only("Then it should stop showing that record", async () => {
+    test("Then it should stop showing that record", async () => {
       customRender(<App />);
 
       const deleteButton = screen.getByRole("button", { name: "delete On" });
