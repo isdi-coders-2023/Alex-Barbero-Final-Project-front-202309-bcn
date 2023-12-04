@@ -9,9 +9,13 @@ describe("Given a showLoading uiReducer", () => {
     test("Then it should change the Loading state into true", () => {
       const expectedIsLoading: UiStateStructure = {
         isLoading: true,
+        feedbackToast: { message: "", type: "off" },
       };
 
-      const currentState: UiStateStructure = { isLoading: false };
+      const currentState: UiStateStructure = {
+        isLoading: false,
+        feedbackToast: { message: "", type: "off" },
+      };
 
       const isLoadingState = uiReducer(
         currentState,

@@ -60,12 +60,6 @@ describe("Given a RecordCard component", () => {
 
       await userEvent.click(deleteButton);
 
-      const promise = new Promise((resolve) => {
-        setTimeout(() => resolve("done"), 50);
-      });
-
-      await promise;
-
       waitFor(() => {
         expect(dispatch).toHaveBeenCalled();
       });

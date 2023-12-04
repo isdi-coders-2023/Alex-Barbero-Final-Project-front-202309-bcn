@@ -32,11 +32,6 @@ describe("Given an App component", () => {
 
       await fireEvent.click(deleteButton);
 
-      const promise = new Promise((resolve) => {
-        setTimeout(() => resolve("done"), 50);
-      });
-      await promise;
-
       await waitFor(() =>
         expect(
           screen.getByText("'Dame veneno' was deleted ✅😍!"),
