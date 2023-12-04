@@ -1,7 +1,7 @@
 import { screen, waitFor } from "@testing-library/react";
 import Navigation from "./Navigation";
-import customRender from "../../test-utils/customRender";
 import userEvent from "@testing-library/user-event";
+import customRender from "../../test-utils/customRender";
 
 describe("Given a Navigation component", () => {
   describe("When it's rendered", () => {

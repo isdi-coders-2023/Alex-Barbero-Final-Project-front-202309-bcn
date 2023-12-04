@@ -8,4 +8,10 @@ export const handlers = [
   http.get(`${apiUrl}/records`, async () => {
     return HttpResponse.json({ records: mock });
   }),
+
+  http.delete(`${apiUrl}/records/1`, async () => {
+    return HttpResponse.json({
+      message: `${mock[0].bandName} ${mock[0].albumName} successfully deleted`,
+    });
+  }),
 ];

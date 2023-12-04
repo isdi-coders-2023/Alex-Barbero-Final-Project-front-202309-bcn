@@ -1,5 +1,5 @@
 interface RecordStructure {
-  id: string;
+  _id: string;
   bandName: string;
   albumName: string;
   frontCover: string;
@@ -8,6 +8,7 @@ interface RecordStructure {
   cookieImage: string;
   description: string;
   trackList: string;
+  isActive: boolean;
 }
 
 export default RecordStructure;

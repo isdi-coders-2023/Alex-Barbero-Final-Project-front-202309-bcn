@@ -7,38 +7,53 @@ import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../store/feature/ui/uiSlice";
-import { useNavigate } from "react-router-dom";
 
 interface UseRecordsApiStructure {
   getRecords: () => Promise<RecordsStateStructure>;
+  deleteRecord: (recordId: string) => Promise<void>;
 }
 
 const useRecordsApi = (): UseRecordsApiStructure => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const getRecords = useCallback(async (): Promise<RecordsStateStructure> => {
     axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
     try {
       dispatch(showLoadingActionCreator());
-
       const { data: records } = await axios.get<{ records: RecordStructure[] }>(
         "/records",
       );
 
       dispatch(hideLoadingActionCreator());
-
       return records;
     } catch (error) {
-      navigate("/not-found");
       dispatch(hideLoadingActionCreator());
-      throw (error as Error).message;
+      throw new Error((error as Error).message);
     }
-  }, [dispatch, navigate]);
+  }, [dispatch]);
+
+  const deleteRecord = useCallback(
+    async (recordId: string): Promise<void> => {
+      axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+
+      dispatch(showLoadingActionCreator());
+
+      try {
+        await axios.delete<{
+          message: string;
+        }>(`/records/${recordId}`);
+        dispatch(hideLoadingActionCreator());
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+      }
+    },
+    [dispatch],
+  );
 
   return {
     getRecords,
+    deleteRecord,
   };
 };
 

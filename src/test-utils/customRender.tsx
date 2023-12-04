@@ -10,14 +10,14 @@ import GlobalStyle from "../styles/GlobalStyle";
 import { uiReducer } from "../store/feature/ui/uiSlice";
 import { PropsWithChildren } from "react";
 
-const mockStore = configureStore({
+export const mockStore = configureStore({
   reducer: {
     recordsState: recordsReducer,
     uiState: uiReducer,
   },
   preloadedState: {
     recordsState: { records: recordsMock },
-    uiState: { isLoading: false },
+    uiState: { isLoading: false, feedbackToast: { message: "", type: "off" } },
   },
 });
 

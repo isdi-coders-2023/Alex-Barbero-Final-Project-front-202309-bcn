@@ -12,7 +12,7 @@ const mainTheme: DefaultTheme = {
   },
   typography: {
     mainFontFamily: "'Jaldi', sans-serif;",
-    contentFontFamily: "'Keania One, serif",
+    contentFontFamily: "'Keania One', serif",
     mainSize: "32px",
     principalInfoSize: "20px",
     detailInfoSize: "18px",

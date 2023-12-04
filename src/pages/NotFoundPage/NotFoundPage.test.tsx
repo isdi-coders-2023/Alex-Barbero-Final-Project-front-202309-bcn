@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../test-utils/customRender";
+import customRenderWithProviders from "../../test-utils/customRenderWithProviders";
 import NotFoundPage from "./NotFoundPage";
 
 describe("Given a NotFoundPage", () => {
@@ -7,7 +7,7 @@ describe("Given a NotFoundPage", () => {
     test("It should show 'Ouch! 404 page not found...' in a heading", () => {
       const expectedHeadingText = "Ouch! 404 page not found...";
 
-      customRender(<NotFoundPage />);
+      customRenderWithProviders(<NotFoundPage />);
 
       const headingElement = screen.getByRole("heading", {
         name: expectedHeadingText,
