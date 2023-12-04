@@ -1,0 +1,13 @@
+.off {
+  display: none;
+}
+
+.Toastify__toast-theme--light {
+  background-color: #2f2f2f;
+  color: #fff;
+}
+
+.Toastify__close-button--light {
+  color: #fff;
+  opacity: 0.7;
+}

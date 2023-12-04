@@ -8,6 +8,7 @@ interface RecordStructure {
   cookieImage: string;
   description: string;
   trackList: string;
+  isActive: boolean;
 }
 
 export default RecordStructure;

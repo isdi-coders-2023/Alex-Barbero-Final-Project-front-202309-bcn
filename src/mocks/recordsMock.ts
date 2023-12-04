@@ -2,7 +2,7 @@ import RecordStructure from "../store/feature/records/types";
 
 const recordsMock: RecordStructure[] = [
   {
-    id: "id1",
+    _id: "1",
     bandName: "Los chunguitos",
     albumName: "Dame veneno",
     frontCover: "https://i.ibb.co/ssBNRbH/kvelertak.webp",
@@ -11,9 +11,10 @@ const recordsMock: RecordStructure[] = [
     cookieImage: "cookie1.png",
     description: "Ke pum ke pam triki taun",
     trackList: "Uan, chu, zri",
+    isActive: true,
   },
   {
-    id: "id2",
+    _id: "2",
     bandName: "Ejtopa",
     albumName: "Fui alaorilla del rio y mi ketabah mu chola",
     frontCover: "https://i.ibb.co/MPScWNn/gel.webp",
@@ -22,9 +23,10 @@ const recordsMock: RecordStructure[] = [
     cookieImage: "cookie2.png",
     description: "Lo etopa son lo ma grande",
     trackList: "Uan, chu, zri",
+    isActive: false,
   },
   {
-    id: "id3",
+    _id: "3",
     bandName: "Chola y Jerena",
     albumName: "Yo quiero bailá",
     frontCover: "https://i.ibb.co/ssBNRbH/kvelertak.webp",
@@ -33,9 +35,10 @@ const recordsMock: RecordStructure[] = [
     cookieImage: "er",
     description: "caló",
     trackList: "fallero",
+    isActive: false,
   },
   {
-    id: "id4",
+    _id: "4",
     bandName: "Andilucas",
     albumName: "deha de lloraaAaiiaau",
     frontCover: "https://i.ibb.co/MPScWNn/gel.webp",
@@ -44,6 +47,7 @@ const recordsMock: RecordStructure[] = [
     cookieImage: "lopetan",
     description: "arriki",
     trackList: "tauntaun",
+    isActive: false,
   },
 ];
 

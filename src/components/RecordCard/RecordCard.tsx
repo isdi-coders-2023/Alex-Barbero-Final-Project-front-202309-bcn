@@ -1,30 +1,45 @@
-import { useState } from "react";
 import recordStructure from "../../store/feature/records/types";
 import RecordCardStyled from "./RecordCardStyled";
 import { useDispatch } from "react-redux";
-import { deleteRecordActionCreator } from "../../store/feature/records/recordsSlice";
+import {
+  deleteRecordActionCreator,
+  updateRecordStateActionCreator,
+} from "../../store/feature/records/recordsSlice";
 import useRecordsApi from "../../hooks/useRecordsApi";
+import { updateToastActionCreator } from "../../store/feature/ui/uiSlice";
 
 interface RecordCardProps {
   record: recordStructure;
 }
 
 const RecordCard = ({
-  record: { albumName, bandName, frontCover, _id },
+  record: { albumName, bandName, frontCover, _id, isActive },
 }: RecordCardProps): React.ReactElement => {
   const dispatch = useDispatch();
-  const [isActive, setIsActive] = useState(false);
   const { deleteRecord } = useRecordsApi();
 
   const toggleIconsVisibility = () => {
-    setIsActive(!isActive);
+    dispatch(updateRecordStateActionCreator(_id));
   };
 
-  const deleteCurrentRecord = (): void => {
-    (async () => {
+  const deleteCurrentRecord = async (): Promise<void> => {
+    try {
       await deleteRecord(_id);
       dispatch(deleteRecordActionCreator(_id));
-    })();
+      dispatch(
+        updateToastActionCreator({
+          message: `'${albumName}' was deleted ✅😍!`,
+          type: "success",
+        }),
+      );
+    } catch {
+      dispatch(
+        updateToastActionCreator({
+          message: `Impossible to delete '${albumName}' ⛔😒...`,
+          type: "error",
+        }),
+      );
+    }
   };
 
   return (
@@ -40,7 +55,7 @@ const RecordCard = ({
         <h2 className="record__title">{bandName}</h2>
         <span className="record__album">{albumName}</span>
       </div>
-      <div className="record__poster">
+      <div className={isActive ? "record__poster--big" : "record__poster"}>
         <img
           className="record__front-cover"
           src={frontCover}
@@ -51,7 +66,7 @@ const RecordCard = ({
         />
       </div>
       <div className="record__icons-box">
-        <a className={isActive ? "" : "off"} href="/home">
+        <a className={isActive ? "record__button" : "off"} href="/home">
           <img
             src="modifyRecord.webp"
             alt={isActive ? "modify On" : "modify Off"}
@@ -59,7 +74,10 @@ const RecordCard = ({
             height="62"
           />
         </a>
-        <button onClick={deleteCurrentRecord} className={isActive ? "" : "off"}>
+        <button
+          onClick={deleteCurrentRecord}
+          className={isActive ? "record__button" : "off"}
+        >
           <img
             src="trashCanIcon.webp"
             alt={isActive ? "delete On" : "delete Off"}
