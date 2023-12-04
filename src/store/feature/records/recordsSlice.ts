@@ -5,11 +5,11 @@ export interface RecordsStateStructure {
   records: RecordStructure[];
 }
 
-const initialState: RecordsStateStructure = { records: [] };
+export const recordsInitialState: RecordsStateStructure = { records: [] };
 
 const recordsSlice = createSlice({
   name: "records",
-  initialState: initialState,
+  initialState: recordsInitialState,
   reducers: {
     loadRecords: (
       currentState: RecordsStateStructure,
@@ -17,6 +17,17 @@ const recordsSlice = createSlice({
     ): RecordsStateStructure => ({
       ...currentState,
       records: action.payload,
+    }),
+    updateRecordState: (
+      currentState: RecordsStateStructure,
+      action: PayloadAction<string>,
+    ): RecordsStateStructure => ({
+      ...currentState,
+      records: currentState.records.map((record) => ({
+        ...record,
+        isActive:
+          record._id === action.payload ? !record.isActive : record.isActive,
+      })),
     }),
     deleteRecord: (
       currentState: RecordsStateStructure,
@@ -33,6 +44,7 @@ const recordsSlice = createSlice({
 export const {
   loadRecords: loadRecordsActionCreator,
   deleteRecord: deleteRecordActionCreator,
+  updateRecordState: updateRecordStateActionCreator,
 } = recordsSlice.actions;
 
 export const recordsReducer = recordsSlice.reducer;

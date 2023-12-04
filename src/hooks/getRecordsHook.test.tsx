@@ -1,11 +1,12 @@
-import { act, renderHook } from "@testing-library/react";
+import { renderHook, waitFor } from "@testing-library/react";
 import recordsMock from "../mocks/recordsMock";
 import useRecordsApi from "./useRecordsApi";
 import { RecordsStateStructure } from "../store/feature/records/recordsSlice";
-import { providerWrapper } from "../test-utils/customRender";
+import * as dispatcher from "../store/hooks";
 import { server } from "../mocks/node";
-import { http, HttpResponse } from "msw";
-import { setupServer } from "msw/node";
+import { errorHandlers } from "../mocks/errorHandlers";
+import App from "../components/App/App";
+import customRender, { providerWrapper } from "../test-utils/customRender";
 
 describe("Given a custom hook", () => {
   describe("When it fetches Records from the API", () => {
@@ -22,33 +23,25 @@ describe("Given a custom hook", () => {
 
       expect(records).toStrictEqual(expectedRecords);
     });
+  });
 
+  describe("When there's and error when fetching record", () => {
     test("It should return no records at all", async () => {
-      const apiUrl = import.meta.env.VITE_API_URL;
+      server.use(...errorHandlers);
 
-      server.close();
+      const spyDispatch = vitest.spyOn(dispatcher, "useAppDispatch");
 
-      const errorServer = setupServer(
-        http.get(`${apiUrl}/records`, async () => {
-          return new HttpResponse(null, { status: 401 });
-        }),
-      );
+      const dispatch = vitest.fn();
 
-      errorServer.listen();
+      spyDispatch.mockReturnValue(dispatch);
 
-      const {
-        result: {
-          current: { getRecords },
-        },
-      } = renderHook(() => useRecordsApi(), { wrapper: providerWrapper });
+      customRender(<App />);
 
-      act(async () => {
-        await getRecords();
+      waitFor(() => {
+        expect(dispatch).toHaveBeenCalled();
       });
 
-      await expect(() => getRecords()).rejects.toThrowError();
-
-      errorServer.close();
+      spyDispatch.mockClear();
     });
   });
 });

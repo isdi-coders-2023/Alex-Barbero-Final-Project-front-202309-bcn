@@ -4,18 +4,24 @@ import RecordsList from "../../components/RecordsList/RecordsList";
 import useRecordsApi from "../../hooks/useRecordsApi";
 import { loadRecordsActionCreator } from "../../store/feature/records/recordsSlice";
 import RecordsPageStyled from "./RecordsPageStyled";
+import { useNavigate } from "react-router-dom";
 
 const RecordsPage = (): React.ReactElement => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { getRecords } = useRecordsApi();
 
   useEffect(() => {
     (async () => {
-      const { records } = await getRecords();
+      try {
+        const { records } = await getRecords();
 
-      dispatch(loadRecordsActionCreator(records));
+        dispatch(loadRecordsActionCreator(records));
+      } catch {
+        navigate("/not-found");
+      }
     })();
-  }, [dispatch, getRecords]);
+  }, [dispatch, getRecords, navigate]);
 
   return (
     <RecordsPageStyled>
