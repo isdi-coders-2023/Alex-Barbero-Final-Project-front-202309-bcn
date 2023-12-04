@@ -1,5 +1,4 @@
 import { screen } from "@testing-library/react";
-
 import Loading from "./Loading";
 import customRender from "../../test-utils/customRender";
 

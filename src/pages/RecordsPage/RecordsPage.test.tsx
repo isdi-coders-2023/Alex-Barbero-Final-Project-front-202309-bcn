@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import customRender from "../../test-utils/customRender";
+import customRenderWithProviders from "../../test-utils/customRenderWithProviders";
 import RecordsPage from "./RecordsPage";
 
 describe("Given a RecordsPage", () => {
@@ -7,7 +7,7 @@ describe("Given a RecordsPage", () => {
     test("It should show 'My records' in a heading", () => {
       const expectedHeadingText = "My records";
 
-      customRender(<RecordsPage />);
+      customRenderWithProviders(<RecordsPage />);
 
       const headingElement = screen.getByRole("heading", {
         name: expectedHeadingText,
