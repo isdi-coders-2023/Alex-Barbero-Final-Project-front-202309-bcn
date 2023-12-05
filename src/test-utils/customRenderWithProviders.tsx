@@ -23,7 +23,6 @@ export interface ActivateCustumazerStructure {
 
 const customRenderWithProviders = (
   children: React.ReactElement,
-  activateCustumazer?: ActivateCustumazerStructure,
   initialProps?: InitialPropsStructure,
 ) => {
   const initialPropsDefault: InitialPropsStructure = {
@@ -34,13 +33,6 @@ const customRenderWithProviders = (
     },
   };
 
-  const ActivateCustumazerDefault: ActivateCustumazerStructure = {
-    isMemoryRouter: true,
-    isProvider: true,
-  };
-
-  const { isMemoryRouter, isProvider } =
-    activateCustumazer ?? ActivateCustumazerDefault;
   const { initialPath, preloadedState } = initialProps ?? initialPropsDefault;
 
   const base = (
@@ -52,22 +44,13 @@ const customRenderWithProviders = (
     </Provider>
   );
 
-  const setProvide: React.ReactElement = isProvider ? (
+  const setProvide: React.ReactElement = (
     <Provider store={setupStore(preloadedState)}>{base}</Provider>
-  ) : (
-    base
   );
 
-  const setMemoryRouter: React.ReactElement =
-    isMemoryRouter ?? ActivateCustumazerDefault.isMemoryRouter ? (
-      <MemoryRouter
-        initialEntries={[initialPath ?? initialPropsDefault.initialPath!]}
-      >
-        {setProvide}
-      </MemoryRouter>
-    ) : (
-      setProvide
-    );
+  const setMemoryRouter: React.ReactElement = (
+    <MemoryRouter initialEntries={[initialPath!]}>{setProvide}</MemoryRouter>
+  );
 
   return render(setMemoryRouter);
 };

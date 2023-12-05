@@ -1,12 +1,12 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-interface feedbackToastStructure {
+interface FeedbackToastStructure {
   message: string;
   type: "error" | "success" | "off";
 }
 export interface UiStateStructure {
   isLoading: boolean;
-  feedbackToast: feedbackToastStructure;
+  feedbackToast: FeedbackToastStructure;
 }
 
 export const uiInitialState: UiStateStructure = {
@@ -28,7 +28,7 @@ const uiSlice = createSlice({
     }),
     updateToast: (
       currentUistate: UiStateStructure,
-      action: PayloadAction<feedbackToastStructure>,
+      action: PayloadAction<FeedbackToastStructure>,
     ) => ({
       ...currentUistate,
       feedbackToast: {

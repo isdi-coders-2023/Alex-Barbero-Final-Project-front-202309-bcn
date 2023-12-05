@@ -6,11 +6,12 @@ import { useDispatch } from "react-redux";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
+  updateToastActionCreator,
 } from "../store/feature/ui/uiSlice";
 
 interface UseRecordsApiStructure {
   getRecords: () => Promise<RecordsStateStructure>;
-  deleteRecord: (recordId: string) => Promise<void>;
+  deleteRecord: (recordId: string, albumName: string) => Promise<void>;
 }
 
 const useRecordsApi = (): UseRecordsApiStructure => {
@@ -34,18 +35,30 @@ const useRecordsApi = (): UseRecordsApiStructure => {
   }, [dispatch]);
 
   const deleteRecord = useCallback(
-    async (recordId: string): Promise<void> => {
+    async (recordId: string, albumName: string): Promise<void> => {
       axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
-      dispatch(showLoadingActionCreator());
-
       try {
+        dispatch(showLoadingActionCreator());
         await axios.delete<{
           message: string;
         }>(`/records/${recordId}`);
+
+        dispatch(
+          updateToastActionCreator({
+            message: `'${albumName}' was deleted ✅😍!`,
+            type: "success",
+          }),
+        );
         dispatch(hideLoadingActionCreator());
       } catch (error) {
         dispatch(hideLoadingActionCreator());
+        dispatch(
+          updateToastActionCreator({
+            message: `Impossible to delete '${albumName}' ⛔😒...`,
+            type: "error",
+          }),
+        );
       }
     },
     [dispatch],
