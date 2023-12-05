@@ -6,7 +6,6 @@ import {
   updateRecordStateActionCreator,
 } from "../../store/feature/records/recordsSlice";
 import useRecordsApi from "../../hooks/useRecordsApi";
-import { updateToastActionCreator } from "../../store/feature/ui/uiSlice";
 
 interface RecordCardProps {
   record: recordStructure;
@@ -23,23 +22,8 @@ const RecordCard = ({
   };
 
   const deleteCurrentRecord = async (): Promise<void> => {
-    try {
-      await deleteRecord(_id);
-      dispatch(deleteRecordActionCreator(_id));
-      dispatch(
-        updateToastActionCreator({
-          message: `'${albumName}' was deleted ✅😍!`,
-          type: "success",
-        }),
-      );
-    } catch {
-      dispatch(
-        updateToastActionCreator({
-          message: `Impossible to delete '${albumName}' ⛔😒...`,
-          type: "error",
-        }),
-      );
-    }
+    await deleteRecord(_id, albumName);
+    dispatch(deleteRecordActionCreator(_id));
   };
 
   return (

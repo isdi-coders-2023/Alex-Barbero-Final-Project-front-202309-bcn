@@ -12,20 +12,24 @@ const RecordsList = (): React.ReactElement => {
           <RecordCard record={record} />
         </li>
       ))}
-      <img
-        className="footer-box"
-        src="./upperBox.png"
-        alt="footer box up"
-        height="344"
-        width="390"
-      />
-      <img
-        className="footer-box footer-box--down"
-        src="./footerBox.png"
-        alt="footer box down"
-        height="215"
-        width="390"
-      />
+      <div className="footer-box">
+        <img
+          className="footer-box__image"
+          src="./upperBox.png"
+          alt="footer box up"
+          height="344"
+          width="390"
+        />
+      </div>
+      <div className="footer-box footer-box--down">
+        <img
+          className="footer-box--down__image"
+          src="./footerBox.png"
+          alt="footer box down"
+          height="215"
+          width="390"
+        />
+      </div>
     </RecordsListStyled>
   );
 };

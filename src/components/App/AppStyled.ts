@@ -11,16 +11,6 @@ const AppStyled = styled.main`
     background-size: contain;
     background-repeat: no-repeat;
   }
-
-  .toast {
-    position: fixed;
-    top: 120px;
-    z-index: 4;
-    padding: 10px;
-    background-color: #b0b0b0;
-    border: black;
-    border-radius: 10px;
-  }
 `;
 
 export default AppStyled;

@@ -45,11 +45,7 @@ describe("Given an App component", () => {
     test("Then it should show the title 'My records' into a heading", () => {
       const expectedTitle = "My records";
 
-      customRenderWithProviders(
-        <App />,
-        { isMemoryRouter: true, isProvider: true },
-        { initialPath: "/home" },
-      );
+      customRenderWithProviders(<App />, { initialPath: "/home" });
       const title = screen.getByRole("heading", { name: expectedTitle });
 
       expect(title).toBeInTheDocument();
