@@ -66,5 +66,25 @@ describe("Given a RecordCard component", () => {
 
       spyDispatch.mockClear();
     });
+
+    test("the user shouldn't see that card anymore", async () => {
+      const losChunguitos = recordsMock[0];
+
+      customRender(<RecordCard record={losChunguitos} />);
+
+      const deleteButton = screen.getByRole("button", {
+        name: "delete On",
+      });
+
+      await userEvent.click(deleteButton);
+
+      const losChungitosElement = screen.getByRole("heading", {
+        name: losChunguitos.bandName,
+      });
+
+      waitFor(() => {
+        expect(losChungitosElement).not.toBeInTheDocument();
+      });
+    });
   });
 });
