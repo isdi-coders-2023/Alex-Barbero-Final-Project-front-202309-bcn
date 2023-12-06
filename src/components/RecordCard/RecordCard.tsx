@@ -1,10 +1,7 @@
 import recordStructure from "../../store/feature/records/types";
 import RecordCardStyled from "./RecordCardStyled";
 import { useDispatch } from "react-redux";
-import {
-  deleteRecordActionCreator,
-  updateRecordStateActionCreator,
-} from "../../store/feature/records/recordsSlice";
+import { updateRecordStateActionCreator } from "../../store/feature/records/recordsSlice";
 import useRecordsApi from "../../hooks/useRecordsApi";
 
 interface RecordCardProps {
@@ -23,7 +20,6 @@ const RecordCard = ({
 
   const deleteCurrentRecord = async (): Promise<void> => {
     await deleteRecord(_id, albumName);
-    dispatch(deleteRecordActionCreator(_id));
   };
 
   return (

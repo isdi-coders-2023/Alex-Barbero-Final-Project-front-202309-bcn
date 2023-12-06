@@ -6,6 +6,7 @@ import { useAppSelector } from "../../store/hooks";
 import Loading from "../Loading/Loading";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import Toast from "../Toast/Toast";
+import RecordsFormPage from "../../pages/RecordsFormPage/RecordsFormPage";
 
 const App = (): React.ReactElement => {
   const isLoading = useAppSelector((state) => state.uiState.isLoading);
@@ -20,8 +21,10 @@ const App = (): React.ReactElement => {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<RecordsPage />} />
+          <Route path="/add" element={<RecordsFormPage />} />
           <Route path="/not-found" element={<NotFoundPage />} />
         </Routes>
+        <div className="footer" />
       </AppStyled>
     </>
   );
