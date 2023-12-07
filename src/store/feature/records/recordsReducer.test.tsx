@@ -1,4 +1,4 @@
-import recordsMock from "../../../mocks/recordsMock";
+import { recordsMock } from "../../../mocks/recordsMock";
 import {
   RecordsStateStructure,
   loadRecordsActionCreator,
