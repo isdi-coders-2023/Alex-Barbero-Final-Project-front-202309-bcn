@@ -1,4 +1,6 @@
-import RecordStructure from "../store/feature/records/types";
+import RecordStructure, {
+  RecordStructureWithoutId,
+} from "../store/feature/records/types";
 
 const recordsMock: RecordStructure[] = [
   {
@@ -50,5 +52,17 @@ const recordsMock: RecordStructure[] = [
     isActive: false,
   },
 ];
+
+export const recordMockWithouId: RecordStructureWithoutId = {
+  bandName: "David bisbal",
+  albumName: "Ave Maria",
+  frontCover: "la pelukeria",
+  backCover: "si me",
+  printImage: "kisieras",
+  cookieImage: "todo",
+  description: "te",
+  trackList: "daria",
+  isActive: false,
+};
 
 export default recordsMock;
