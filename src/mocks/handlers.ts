@@ -9,6 +9,10 @@ export const handlers = [
     return HttpResponse.json({ records: mock });
   }),
 
+  http.get(`${apiUrl}/records/${recordsMock[0]._id}`, async () => {
+    return HttpResponse.json({ record: recordsMock[0] });
+  }),
+
   http.post(`${apiUrl}/records`, async () => {
     return HttpResponse.json({ record: recordsMock[1] });
   }),
