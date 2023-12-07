@@ -2,7 +2,7 @@ import RecordStructure, {
   RecordStructureWithoutId,
 } from "../store/feature/records/types";
 
-const recordsMock: RecordStructure[] = [
+export const recordsMock: RecordStructure[] = [
   {
     _id: "1",
     bandName: "Los chunguitos",
@@ -64,5 +64,3 @@ export const recordMockWithouId: RecordStructureWithoutId = {
   trackList: "daria",
   isActive: false,
 };
-
-export default recordsMock;

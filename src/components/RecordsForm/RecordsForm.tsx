@@ -7,9 +7,10 @@ import RecordsFormStyled from "./RecordsFormStyled";
 
 interface RecordFormProps {
   submitAction: (newRecord: RecordStructure) => void;
+  initialState?: RecordStructureWithoutId;
 }
 
-const RecordForm = ({ submitAction }: RecordFormProps) => {
+const RecordForm = ({ submitAction, initialState }: RecordFormProps) => {
   const initialRecord: RecordStructureWithoutId = {
     albumName: "",
     backCover: "",
@@ -21,9 +22,11 @@ const RecordForm = ({ submitAction }: RecordFormProps) => {
     trackList: "",
   };
 
+  const currentInitialState = initialState ? initialState : initialRecord;
+
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
   const [newRecord, setNewRecord] =
-    useState<RecordStructureWithoutId>(initialRecord);
+    useState<RecordStructureWithoutId>(currentInitialState);
 
   const updateNewRecord = (
     event:
