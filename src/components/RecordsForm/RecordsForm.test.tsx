@@ -63,4 +63,45 @@ describe("Given a RecordsForm component", () => {
       expect(actionOnClick).toHaveBeenCalled();
     });
   });
+
+  describe("When it's rendered and user types something in every input ", () => {
+    test("It should let the submit button to be clicked", async () => {
+      const expectedInputText = "Holita";
+      const expectedButtonText = "Create new Record";
+
+      customRender(<RecordsForm submitAction={actionOnClick} />);
+
+      const inputBandElement = screen.getByLabelText("Band name:");
+      await userEvent.type(inputBandElement, expectedInputText);
+
+      const inputRecordElement = screen.getByLabelText("Record name:");
+      await userEvent.type(inputRecordElement, expectedInputText);
+
+      const inputFrontElement = screen.getByLabelText("Front cover image:");
+      await userEvent.type(inputFrontElement, expectedInputText);
+
+      const inputBackElement = screen.getByLabelText("Back cover image:");
+      await userEvent.type(inputBackElement, expectedInputText);
+
+      const inputInsertElement = screen.getByLabelText("Insert image:");
+      await userEvent.type(inputInsertElement, expectedInputText);
+
+      const inputCookieElement = screen.getByLabelText("Label cookie image:");
+      await userEvent.type(inputCookieElement, expectedInputText);
+
+      const inputDescriptionElement = screen.getByLabelText("Description:");
+      await userEvent.type(inputDescriptionElement, expectedInputText);
+
+      const inputTrackElement = screen.getByLabelText("Track list:");
+      await userEvent.type(inputTrackElement, expectedInputText);
+
+      const formButtonElement = screen.getByRole("button", {
+        name: expectedButtonText,
+      });
+
+      await userEvent.click(formButtonElement);
+
+      await expect(actionOnClick).toHaveBeenCalled();
+    });
+  });
 });

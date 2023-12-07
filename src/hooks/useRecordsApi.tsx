@@ -40,13 +40,7 @@ const useRecordsApi = (): UseRecordsApiStructure => {
       dispatch(hideLoadingActionCreator());
       return data.records!;
     } catch (error) {
-      dispatch(hideLoadingActionCreator());
-      dispatch(
-        updateToastActionCreator({
-          message: `'Records not found!`,
-          type: "error",
-        }),
-      );
+      throw Error((error as Error).message);
     }
   }, [dispatch]);
 

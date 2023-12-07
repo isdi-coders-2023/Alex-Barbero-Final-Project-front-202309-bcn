@@ -41,11 +41,14 @@ describe("Given an App component", () => {
     });
   });
 
-  describe("When it receives a path to /records", () => {
+  describe("When it receives a path to /home", () => {
     test("Then it should show the title 'My records' into a heading", () => {
       const expectedTitle = "My records";
 
-      customRenderWithProviders(<App />, { initialPath: "/home" });
+      customRenderWithProviders(<App />, {
+        initialPath: "/home",
+        preloadedState: { recordsState: { records: [] } },
+      });
       const title = screen.getByRole("heading", { name: expectedTitle });
 
       expect(title).toBeInTheDocument();

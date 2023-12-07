@@ -1,9 +1,9 @@
 import { renderHook, waitFor } from "@testing-library/react";
-import recordsMock from "../mocks/recordsMock";
+import { recordsMock } from "../mocks/recordsMock";
 import useRecordsApi from "./useRecordsApi";
 import * as dispatcher from "../store/hooks";
 import { server } from "../mocks/node";
-import { errorHandlers } from "../mocks/errorHandlers";
+import { errorHandlers, undefinedHandlers } from "../mocks/errorHandlers";
 import App from "../components/App/App";
 import customRender, { providerWrapper } from "../test-utils/customRender";
 import RecordStructure from "../store/feature/records/types";
@@ -42,6 +42,22 @@ describe("Given a custom hook", () => {
       });
 
       spyDispatch.mockClear();
+    });
+  });
+
+  describe("When it recives undefined", () => {
+    test("It should return no records", async () => {
+      server.use(...undefinedHandlers);
+
+      const {
+        result: {
+          current: { getRecords },
+        },
+      } = renderHook(() => useRecordsApi(), { wrapper: providerWrapper });
+
+      const record = await getRecords();
+
+      expect(record).toStrictEqual(undefined);
     });
   });
 });
