@@ -9,6 +9,7 @@ import recordsMock from "../mocks/recordsMock";
 import GlobalStyle from "../styles/GlobalStyle";
 import { uiReducer } from "../store/feature/ui/uiSlice";
 import { PropsWithChildren } from "react";
+import { store } from "../store";
 
 export const mockStore = configureStore({
   reducer: {
@@ -17,7 +18,10 @@ export const mockStore = configureStore({
   },
   preloadedState: {
     recordsState: { records: recordsMock },
-    uiState: { isLoading: false, feedbackToast: { message: "", type: "off" } },
+    uiState: {
+      isLoading: false,
+      feedbackToast: { message: "", type: "error" },
+    },
   },
 });
 
@@ -37,11 +41,9 @@ const customRender = (children: React.ReactElement) => {
 export const providerWrapper = ({ children }: PropsWithChildren) => {
   return (
     <BrowserRouter>
-      <Provider store={mockStore}>
-        <ThemeProvider theme={mainTheme}>
-          <GlobalStyle />
-          {children}
-        </ThemeProvider>
+      <Provider store={store}>
+        <GlobalStyle />
+        <ThemeProvider theme={mainTheme}>{children}</ThemeProvider>
       </Provider>
     </BrowserRouter>
   );

@@ -37,10 +37,8 @@ const customRenderWithProviders = (
 
   const base = (
     <Provider store={mockStore}>
-      <ThemeProvider theme={mainTheme}>
-        <GlobalStyle />
-        {children}
-      </ThemeProvider>
+      <GlobalStyle />
+      <ThemeProvider theme={mainTheme}>{children}</ThemeProvider>
     </Provider>
   );
 
