@@ -3,10 +3,10 @@ import ButtonStyled from "./ButtonStyled";
 interface ButtonProps {
   type: "button" | "submit";
   actionOnClick?: () => void;
-  isDisabled: boolean;
+  isDisabled?: boolean;
   text?: string | React.ReactElement;
   className?: string;
-  title: string;
+  title?: string;
 }
 
 const Button = ({
