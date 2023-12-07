@@ -5,7 +5,7 @@ import RecordsListStyled from "./RecordsListStyled";
 const RecordsList = (): React.ReactElement => {
   const records = useAppSelector((state) => state.recordsState.records);
 
-  return (
+  return records.length > 0 ? (
     <RecordsListStyled>
       {records.map((record) => (
         <li key={record._id}>
@@ -31,6 +31,8 @@ const RecordsList = (): React.ReactElement => {
         />
       </div>
     </RecordsListStyled>
+  ) : (
+    <span>Records not found!</span>
   );
 };
 

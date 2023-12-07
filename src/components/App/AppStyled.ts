@@ -11,6 +11,15 @@ const AppStyled = styled.main`
     background-size: contain;
     background-repeat: no-repeat;
   }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 3;
+    height: 10px;
+    background-color: #fff;
+  }
 `;
 
 export default AppStyled;

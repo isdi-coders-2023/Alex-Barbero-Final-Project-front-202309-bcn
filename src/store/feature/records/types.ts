@@ -8,7 +8,9 @@ interface RecordStructure {
   cookieImage: string;
   description: string;
   trackList: string;
-  isActive: boolean;
+  isActive?: boolean;
 }
+
+export type RecordStructureWithoutId = Omit<RecordStructure, "_id">;
 
 export default RecordStructure;

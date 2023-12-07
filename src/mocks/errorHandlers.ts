@@ -7,6 +7,10 @@ export const errorHandlers = [
     return HttpResponse.error();
   }),
 
+  http.post(`${apiUrl}/records`, async () => {
+    return HttpResponse.error();
+  }),
+
   http.delete(`${apiUrl}/records/1`, async () => {
     return HttpResponse.error();
   }),

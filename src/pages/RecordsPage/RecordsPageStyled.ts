@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const RecordsPageStyled = styled.div`
+const PageStyled = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -37,4 +37,4 @@ const RecordsPageStyled = styled.div`
   }
 `;
 
-export default RecordsPageStyled;
+export default PageStyled;

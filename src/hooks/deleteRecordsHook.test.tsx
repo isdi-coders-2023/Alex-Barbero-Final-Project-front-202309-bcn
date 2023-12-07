@@ -1,25 +1,30 @@
-import { screen, waitFor } from "@testing-library/react";
-import App from "../components/App/App";
+import { renderHook } from "@testing-library/react";
+
 import { errorHandlers } from "../mocks/errorHandlers";
 import { server } from "../mocks/node";
-import customRender from "../test-utils/customRender";
-import userEvent from "@testing-library/user-event";
+import { providerWrapper } from "../test-utils/customRender";
+
+import recordsMock from "../mocks/recordsMock";
+
+import useRecordsApi from "./useRecordsApi";
+import { store } from "../store";
 
 describe("Given a deleteRecords function", () => {
   describe("When it renders Los chunguitos and it's delete button is clicked but it fails", () => {
     test("Then it should show a message Impossible to delete 'Dame veneno'...", async () => {
-      customRender(<App />);
       server.use(...errorHandlers);
 
-      const deleteButton = screen.getByRole("button", { name: "delete On" });
+      const {
+        result: {
+          current: { deleteRecord },
+        },
+      } = renderHook(() => useRecordsApi(), { wrapper: providerWrapper });
 
-      await userEvent.click(deleteButton);
+      await deleteRecord(recordsMock[0]._id, recordsMock[0].albumName);
 
-      await waitFor(() =>
-        expect(
-          screen.getByText("Impossible to delete 'Dame veneno' ⛔😒..."),
-        ).toBeInTheDocument(),
-      );
+      const updatedMessage = store.getState().uiState.feedbackToast.message;
+
+      expect(updatedMessage).toBe("Impossible to delete 'Dame veneno' ⛔😒...");
     });
   });
 });
