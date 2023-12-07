@@ -4,11 +4,9 @@ import RecordsList from "../../components/RecordsList/RecordsList";
 import useRecordsApi from "../../hooks/useRecordsApi";
 import { loadRecordsActionCreator } from "../../store/feature/records/recordsSlice";
 import PageStyled from "./RecordsPageStyled";
-import { useNavigate } from "react-router-dom";
 
 const RecordsPage = (): React.ReactElement => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { getRecords } = useRecordsApi();
 
   useEffect(() => {
@@ -21,7 +19,7 @@ const RecordsPage = (): React.ReactElement => {
 
       dispatch(loadRecordsActionCreator(records));
     })();
-  }, [dispatch, getRecords, navigate]);
+  }, [dispatch, getRecords]);
 
   return (
     <PageStyled>

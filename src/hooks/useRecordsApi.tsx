@@ -17,6 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 interface UseRecordsApiStructure {
   getRecords: () => Promise<RecordStructure[] | undefined>;
+  getRecordById: (recordId: string) => Promise<RecordStructure | undefined>;
   deleteRecord: (recordId: string, albumName: string) => Promise<void>;
   addNewRecord: (newRecord: RecordStructureWithoutId) => Promise<void>;
 }
@@ -48,6 +49,29 @@ const useRecordsApi = (): UseRecordsApiStructure => {
       );
     }
   }, [dispatch]);
+
+  const getRecordById = useCallback(
+    async (recordId: string): Promise<RecordStructure | undefined> => {
+      try {
+        dispatch(showLoadingActionCreator());
+        const { data } = await axios.get<{ record: RecordStructure }>(
+          `/records/${recordId}`,
+        );
+
+        dispatch(hideLoadingActionCreator());
+        return data.record;
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+        dispatch(
+          updateToastActionCreator({
+            message: `'Record not found!`,
+            type: "error",
+          }),
+        );
+      }
+    },
+    [dispatch],
+  );
 
   const deleteRecord = useCallback(
     async (recordId: string, albumName: string): Promise<void> => {
@@ -115,6 +139,7 @@ const useRecordsApi = (): UseRecordsApiStructure => {
 
   return {
     getRecords,
+    getRecordById,
     deleteRecord,
     addNewRecord,
   };
