@@ -4,7 +4,7 @@ import { errorHandlers } from "../mocks/errorHandlers";
 import { server } from "../mocks/node";
 import { providerWrapper } from "../test-utils/customRender";
 
-import recordsMock from "../mocks/recordsMock";
+import { recordsMock } from "../mocks/recordsMock";
 
 import useRecordsApi from "./useRecordsApi";
 import { store } from "../store";

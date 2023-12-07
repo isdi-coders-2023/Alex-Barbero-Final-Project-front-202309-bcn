@@ -1,5 +1,5 @@
 import { screen, waitFor } from "@testing-library/react";
-import recordsMock from "../../mocks/recordsMock";
+import { recordsMock } from "../../mocks/recordsMock";
 import RecordCard from "./RecordCard";
 import userEvent from "@testing-library/user-event";
 import * as dispatcher from "../../store/hooks";

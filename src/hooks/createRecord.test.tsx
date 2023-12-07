@@ -39,7 +39,7 @@ describe("Given a addNewRecords function", () => {
   });
 
   describe("When user enters the new Record data and create button is clicked", () => {
-    test.only("Then it should show a message 'New record was created!'...", async () => {
+    test("Then it should show a message 'New record was created!'...", async () => {
       const {
         result: {
           current: { addNewRecord },
