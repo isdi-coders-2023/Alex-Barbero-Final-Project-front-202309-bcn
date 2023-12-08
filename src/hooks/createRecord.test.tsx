@@ -7,6 +7,7 @@ import { providerWrapper } from "../test-utils/customRender";
 import useRecordsApi from "./useRecordsApi";
 import customRenderWithProviders from "../test-utils/customRenderWithProviders";
 import App from "../components/App/App";
+import RecordStructure from "../store/feature/records/types";
 
 describe("Given a addNewRecords function", () => {
   describe("When user enters the new Record data and create button is clicked", () => {
@@ -19,7 +20,10 @@ describe("Given a addNewRecords function", () => {
 
       customRenderWithProviders(<App />, {
         preloadedState: {
-          recordsState: { records: [] },
+          recordsState: {
+            records: [],
+            currentDetailRecord: {} as RecordStructure,
+          },
           uiState: {
             feedbackToast: { type: "success", message: "" },
             isLoading: true,
@@ -48,7 +52,10 @@ describe("Given a addNewRecords function", () => {
 
       customRenderWithProviders(<App />, {
         preloadedState: {
-          recordsState: { records: [] },
+          recordsState: {
+            records: [],
+            currentDetailRecord: {} as RecordStructure,
+          },
           uiState: {
             feedbackToast: { type: "success", message: "" },
             isLoading: true,

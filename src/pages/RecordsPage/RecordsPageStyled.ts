@@ -21,6 +21,7 @@ const PageStyled = styled.div`
     width: 100%;
     height: 50px;
     position: fixed;
+    padding: 10px;
     top: 90px;
     z-index: 3;
     text-align: center;
