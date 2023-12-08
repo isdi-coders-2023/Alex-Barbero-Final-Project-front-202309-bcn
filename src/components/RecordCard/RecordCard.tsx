@@ -3,6 +3,7 @@ import RecordCardStyled from "./RecordCardStyled";
 import { useDispatch } from "react-redux";
 import { updateRecordStateActionCreator } from "../../store/feature/records/recordsSlice";
 import useRecordsApi from "../../hooks/useRecordsApi";
+import { useNavigate } from "react-router-dom";
 
 interface RecordCardProps {
   record: recordStructure;
@@ -12,6 +13,7 @@ const RecordCard = ({
   record: { albumName, bandName, frontCover, _id, isActive },
 }: RecordCardProps): React.ReactElement => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { deleteRecord } = useRecordsApi();
 
   const toggleIconsVisibility = () => {
@@ -22,8 +24,21 @@ const RecordCard = ({
     await deleteRecord(_id, albumName);
   };
 
+  const seeCurrentRecordDetails = () => {
+    navigate(`/details/${_id}`);
+  };
+
   return (
     <RecordCardStyled onClick={toggleIconsVisibility}>
+      <button
+        className={
+          isActive ? "record__button record__button-see-details" : "off"
+        }
+        onClick={seeCurrentRecordDetails}
+      >
+        +
+      </button>
+
       <img
         className="record__background"
         src="./record.png"

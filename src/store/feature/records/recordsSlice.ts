@@ -3,11 +3,25 @@ import RecordStructure from "./types";
 
 export interface RecordsStateStructure {
   records: RecordStructure[];
+  currentDetailRecord: RecordStructure;
 }
 
 export type RecordsAxiosResponse = RecordStructure | undefined;
 
-export const recordsInitialState: RecordsStateStructure = { records: [] };
+export const recordsInitialState: RecordsStateStructure = {
+  records: [],
+  currentDetailRecord: {
+    _id: "",
+    albumName: "",
+    backCover: "",
+    bandName: "",
+    cookieImage: "",
+    description: "",
+    frontCover: "",
+    printImage: "",
+    trackList: "",
+  },
+};
 
 const recordsSlice = createSlice({
   name: "records",
@@ -47,6 +61,13 @@ const recordsSlice = createSlice({
       ...currentState,
       records: [...currentState.records, action.payload],
     }),
+    updateCurrentRecord: (
+      currentState: RecordsStateStructure,
+      action: PayloadAction<RecordStructure>,
+    ): RecordsStateStructure => ({
+      ...currentState,
+      currentDetailRecord: action.payload,
+    }),
   },
 });
 
@@ -55,6 +76,7 @@ export const {
   deleteRecord: deleteRecordActionCreator,
   updateRecordState: updateRecordStateActionCreator,
   addNewRecord: addNewRecordActionCreator,
+  updateCurrentRecord: updateCurrentRecordActionCreator,
 } = recordsSlice.actions;
 
 export const recordsReducer = recordsSlice.reducer;

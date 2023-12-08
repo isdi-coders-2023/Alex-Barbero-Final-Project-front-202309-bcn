@@ -10,6 +10,7 @@ import GlobalStyle from "../styles/GlobalStyle";
 import { uiReducer } from "../store/feature/ui/uiSlice";
 import { PropsWithChildren } from "react";
 import { store } from "../store";
+import RecordStructure from "../store/feature/records/types";
 
 export const mockStore = configureStore({
   reducer: {
@@ -17,7 +18,10 @@ export const mockStore = configureStore({
     uiState: uiReducer,
   },
   preloadedState: {
-    recordsState: { records: recordsMock },
+    recordsState: {
+      records: recordsMock,
+      currentDetailRecord: {} as RecordStructure,
+    },
     uiState: {
       isLoading: false,
       feedbackToast: { message: "", type: "error" },

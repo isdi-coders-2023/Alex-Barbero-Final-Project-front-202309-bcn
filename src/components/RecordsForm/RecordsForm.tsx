@@ -22,7 +22,7 @@ const RecordForm = ({ submitAction, initialState }: RecordFormProps) => {
     trackList: "",
   };
 
-  const currentInitialState = initialState ? initialState : initialRecord;
+  const currentInitialState = initialState ?? initialRecord;
 
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
   const [newRecord, setNewRecord] =

@@ -105,7 +105,9 @@ const useRecordsApi = (): UseRecordsApiStructure => {
       try {
         dispatch(showLoadingActionCreator());
 
-        const response = await axios.post<{
+        const {
+          data: { record },
+        } = await axios.post<{
           record: RecordStructure;
         }>(`/records`, newRecord);
 
@@ -115,7 +117,7 @@ const useRecordsApi = (): UseRecordsApiStructure => {
             type: "success",
           }),
         );
-        dispatch(addNewRecordActionCreator(response.data.record));
+        dispatch(addNewRecordActionCreator(record));
         dispatch(hideLoadingActionCreator());
         navigate("/home");
       } catch (error) {

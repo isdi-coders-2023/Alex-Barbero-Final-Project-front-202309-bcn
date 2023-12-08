@@ -3,6 +3,7 @@ import customRenderWithProviders from "../../test-utils/customRenderWithProvider
 import RecordsPage from "./RecordsPage";
 import { undefinedHandlers } from "../../mocks/errorHandlers";
 import { server } from "../../mocks/node";
+import RecordStructure from "../../store/feature/records/types";
 
 describe("Given a RecordsPage", () => {
   describe("When recieves a list of Records", () => {
@@ -25,7 +26,12 @@ describe("Given a RecordsPage", () => {
 
       customRenderWithProviders(<RecordsPage />, {
         initialPath: "/home",
-        preloadedState: { recordsState: { records: [] } },
+        preloadedState: {
+          recordsState: {
+            records: [],
+            currentDetailRecord: {} as RecordStructure,
+          },
+        },
       });
 
       const headingElement = screen.getByText("Records not found!");

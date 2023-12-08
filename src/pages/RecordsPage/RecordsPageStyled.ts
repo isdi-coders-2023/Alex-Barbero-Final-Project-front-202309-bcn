@@ -6,16 +6,6 @@ const PageStyled = styled.div`
   flex-direction: column;
   align-items: center;
 
-  .toast {
-    position: fixed;
-    top: 120px;
-    z-index: 4;
-    padding: 10px;
-    background-color: #b0b0b0;
-    border: black;
-    border-radius: 10px;
-  }
-
   .main-title {
     font-family: fantasy;
     font-weight: lighter;
@@ -31,6 +21,7 @@ const PageStyled = styled.div`
     width: 100%;
     height: 50px;
     position: fixed;
+    padding: 10px;
     top: 90px;
     z-index: 3;
     text-align: center;

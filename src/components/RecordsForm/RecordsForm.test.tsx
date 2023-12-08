@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import customRender from "../../test-utils/customRender";
 import RecordsForm from "./RecordsForm";
 import userEvent from "@testing-library/user-event";
@@ -46,7 +46,7 @@ describe("Given a RecordsForm component", () => {
 
       const textElement = screen.getByDisplayValue(expectedInputText);
 
-      await waitFor(() => expect(textElement));
+      expect(textElement).toBeInTheDocument();
     });
   });
 
@@ -71,29 +71,21 @@ describe("Given a RecordsForm component", () => {
 
       customRender(<RecordsForm submitAction={actionOnClick} />);
 
-      const inputBandElement = screen.getByLabelText("Band name:");
-      await userEvent.type(inputBandElement, expectedInputText);
+      const labels = [
+        "Band name:",
+        "Record name:",
+        "Front cover image:",
+        "Back cover image:",
+        "Insert image:",
+        "Label cookie image:",
+        "Description:",
+        "Track list:",
+      ];
 
-      const inputRecordElement = screen.getByLabelText("Record name:");
-      await userEvent.type(inputRecordElement, expectedInputText);
-
-      const inputFrontElement = screen.getByLabelText("Front cover image:");
-      await userEvent.type(inputFrontElement, expectedInputText);
-
-      const inputBackElement = screen.getByLabelText("Back cover image:");
-      await userEvent.type(inputBackElement, expectedInputText);
-
-      const inputInsertElement = screen.getByLabelText("Insert image:");
-      await userEvent.type(inputInsertElement, expectedInputText);
-
-      const inputCookieElement = screen.getByLabelText("Label cookie image:");
-      await userEvent.type(inputCookieElement, expectedInputText);
-
-      const inputDescriptionElement = screen.getByLabelText("Description:");
-      await userEvent.type(inputDescriptionElement, expectedInputText);
-
-      const inputTrackElement = screen.getByLabelText("Track list:");
-      await userEvent.type(inputTrackElement, expectedInputText);
+      for (const labelText of labels) {
+        const inputBandElement = screen.getByLabelText(labelText);
+        await userEvent.type(inputBandElement, expectedInputText);
+      }
 
       const formButtonElement = screen.getByRole("button", {
         name: expectedButtonText,
