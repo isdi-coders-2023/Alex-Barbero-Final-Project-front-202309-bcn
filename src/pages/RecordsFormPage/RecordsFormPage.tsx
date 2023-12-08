@@ -6,8 +6,8 @@ import RecordStructure from "../../store/feature/records/types";
 const RecordsFormPage = () => {
   const { addNewRecord } = useRecordsApi();
 
-  const addCurrentRecord = (newRecord: RecordStructure) => {
-    addNewRecord(newRecord);
+  const addCurrentRecord = async (newRecord: RecordStructure) => {
+    await addNewRecord(newRecord);
   };
 
   return (
