@@ -29,7 +29,7 @@ describe("Given a recordsReducer", () => {
   });
 
   describe("When it recives the action to update the detailed Record", () => {
-    test.only("Then it should update the state with that Record", () => {
+    test("Then it should update the state with that Record", () => {
       const expectedUpdatedRecordsState: RecordsStateStructure = {
         records: recordsMock,
         currentDetailRecord: recordsMock[0],

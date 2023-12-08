@@ -20,7 +20,7 @@ describe("Given a RecordsFormPage", () => {
   });
 
   describe("When it's rendered and user types something in every input and clicks the submit button ", () => {
-    test.only("It should show 'Album-name of banda-name' was created ✅😍! in a toast ", async () => {
+    test("It should show 'Album-name of banda-name' was created ✅😍! in a toast ", async () => {
       const expectedInputText = "Holita";
       const expectedButtonText = "Create new Record";
 
