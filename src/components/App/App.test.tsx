@@ -67,7 +67,7 @@ describe("Given an App component", () => {
 
 describe("", () => {
   describe("When 'Los Chunguitos' card it's rendered and user clicks in button details", () => {
-    test.only("It should show 'Record details' in a heading", async () => {
+    test("It should show 'Record details' in a heading", async () => {
       customRender(<App />);
       server.use(...handlers);
       const detailsButtons = screen.getAllByRole("button", {

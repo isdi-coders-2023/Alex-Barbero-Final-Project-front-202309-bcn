@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import customRender from "../../test-utils/customRender";
 import RecordsForm from "./RecordsForm";
 import userEvent from "@testing-library/user-event";
@@ -46,7 +46,7 @@ describe("Given a RecordsForm component", () => {
 
       const textElement = screen.getByDisplayValue(expectedInputText);
 
-      await waitFor(() => expect(textElement));
+      expect(textElement).toBeInTheDocument();
     });
   });
 
