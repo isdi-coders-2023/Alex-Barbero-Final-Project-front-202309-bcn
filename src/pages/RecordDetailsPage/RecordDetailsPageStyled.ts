@@ -17,6 +17,7 @@ const RecordDetailsPageStyled = styled.div`
     position: fixed;
     top: 90px;
     z-index: 3;
+    padding: 10px;
     text-align: center;
   }
 
@@ -24,6 +25,7 @@ const RecordDetailsPageStyled = styled.div`
     display: flex;
     height: 100vh;
     align-items: center;
+    justify-content: center;
 
     &__images {
       width: 100%;
@@ -65,7 +67,7 @@ const RecordDetailsPageStyled = styled.div`
 
     &__info-box {
       z-index: 2;
-      padding: 30px;
+      padding: 90px 30px 30px 30px;
       background: rgba(30, 30, 30, 0.73);
       width: 100%;
       height: 100vh;

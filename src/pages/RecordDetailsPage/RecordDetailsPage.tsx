@@ -4,26 +4,23 @@ import RecordDetailsPageStyled from "./RecordDetailsPageStyled";
 import { updateCurrentRecordActionCreator } from "../../store/feature/records/recordsSlice";
 import { useDispatch } from "react-redux";
 import { useAppSelector } from "../../store/hooks";
+import { useMemo } from "react";
 
 const RecordDetailsPage = () => {
-  const { id } = useParams();
+  const { recordId } = useParams();
   const dispatch = useDispatch();
   const { getRecordById } = useRecordsApi();
-
-  (async () => {
-    const record = await getRecordById(id!);
-
-    if (!record) {
-      return;
-    }
-    dispatch(updateCurrentRecordActionCreator(record));
-  })();
-
   const currentRecord = useAppSelector(
     (state) => state.recordsState.currentDetailRecord,
   );
 
-  // const currentRecord = recordMockDetails;
+  useMemo(async () => {
+    const record = await getRecordById(recordId!);
+    if (!record) {
+      return;
+    }
+    dispatch(updateCurrentRecordActionCreator(record));
+  }, [dispatch, getRecordById, recordId]);
 
   return (
     <RecordDetailsPageStyled>
@@ -56,9 +53,9 @@ const RecordDetailsPage = () => {
         </div>
         <section className="details__info-box">
           <p className="details__info">
-            <h2 className="details__info-title">
+            {/* <h2 className="details__info-title">
               {currentRecord.description[0]}
-            </h2>
+            </h2> */}
             {currentRecord.description}
           </p>
           <h2 className="details__track">Track list</h2>

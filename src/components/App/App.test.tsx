@@ -3,6 +3,10 @@ import "@testing-library/jest-dom";
 import App from "./App";
 import customRender from "../../test-utils/customRender";
 import customRenderWithProviders from "../../test-utils/customRenderWithProviders";
+import RecordStructure from "../../store/feature/records/types";
+import userEvent from "@testing-library/user-event";
+import { handlers } from "../../mocks/handlers";
+import { server } from "../../mocks/node";
 
 afterEach(() => {
   vi.clearAllMocks();
@@ -47,11 +51,36 @@ describe("Given an App component", () => {
 
       customRenderWithProviders(<App />, {
         initialPath: "/home",
-        preloadedState: { recordsState: { records: [] } },
+        preloadedState: {
+          recordsState: {
+            records: [],
+            currentDetailRecord: {} as RecordStructure,
+          },
+        },
       });
       const title = screen.getByRole("heading", { name: expectedTitle });
 
       expect(title).toBeInTheDocument();
+    });
+  });
+});
+
+describe("", () => {
+  describe("When 'Los Chunguitos' card it's rendered and user clicks in button details", () => {
+    test.only("It should show 'Record details' in a heading", async () => {
+      customRender(<App />);
+      server.use(...handlers);
+      const detailsButtons = screen.getAllByRole("button", {
+        name: "+",
+      });
+
+      await userEvent.click(detailsButtons[0]);
+
+      const titleElement = screen.getByRole("heading", {
+        name: "Record details",
+      });
+
+      await expect(titleElement).toBeInTheDocument();
     });
   });
 });
