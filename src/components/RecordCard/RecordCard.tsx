@@ -25,7 +25,7 @@ const RecordCard = ({
   };
 
   const seeCurrentRecordDetails = () => {
-    navigate(`/details/${_id}`);
+    navigate(`/${_id}`);
   };
 
   return (

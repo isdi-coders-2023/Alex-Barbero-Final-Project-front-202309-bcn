@@ -12,7 +12,7 @@ export const recordsMock: RecordStructure[] = [
     printImage: "print1.png",
     cookieImage: "cookie1.png",
     description: "Ke pum ke pam triki taun",
-    trackList: "Uan, chu, zri",
+    trackList: "Uan,chu,zri",
     isActive: true,
   },
   {
@@ -24,7 +24,7 @@ export const recordsMock: RecordStructure[] = [
     printImage: "print2.png",
     cookieImage: "cookie2.png",
     description: "Lo etopa son lo ma grande",
-    trackList: "Uan, chu, zri",
+    trackList: "Uan,chu,zri",
     isActive: false,
   },
   {

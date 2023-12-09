@@ -13,6 +13,10 @@ export const handlers = [
     return HttpResponse.json({ record: recordsMock[0] });
   }),
 
+  http.get(`${apiUrl}/records/2`, async () => {
+    return HttpResponse.json({ record: recordsMock[0] });
+  }),
+
   http.post(`${apiUrl}/records`, async () => {
     return HttpResponse.json({ record: recordsMock[1] });
   }),

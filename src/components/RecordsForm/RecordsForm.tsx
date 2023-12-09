@@ -144,9 +144,9 @@ const RecordForm = ({ submitAction, initialState }: RecordFormProps) => {
       <Button
         title="addNew"
         isDisabled={isButtonDisabled}
-        className={"form__create-new"}
-        type={"submit"}
-        text={"Create new Record"}
+        className="form__create-new"
+        type="submit"
+        text="Create new Record"
       />
     </RecordsFormStyled>
   );
