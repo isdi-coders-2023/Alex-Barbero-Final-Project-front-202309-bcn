@@ -111,4 +111,32 @@ describe("Given an App component", () => {
       await expect(titleElement).toBeInTheDocument();
     });
   });
+
+  describe("When 'Los Chunguitos' card it's rendered and user clicks in button modify", () => {
+    test("Then it should show 'Modify Record' in a heading", async () => {
+      const expectedHeadingText = "Modify Record";
+
+      customRenderWithProviders(<App />, {
+        initialPath: "/home",
+        preloadedState: {
+          recordsState: {
+            records: recordsMock,
+            currentRecord: recordMockDetails,
+          },
+        },
+      });
+
+      const modifyButton = screen.getByRole("button", {
+        name: "modify On",
+      });
+
+      await userEvent.click(modifyButton);
+
+      const expectedHeadingElement = screen.getByRole("heading", {
+        name: expectedHeadingText,
+      });
+
+      await expect(expectedHeadingElement).toBeInTheDocument();
+    });
+  });
 });
