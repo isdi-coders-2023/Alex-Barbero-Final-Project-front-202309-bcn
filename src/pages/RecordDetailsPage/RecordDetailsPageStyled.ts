@@ -1,6 +1,27 @@
 import styled from "styled-components";
 
 const RecordDetailsPageStyled = styled.div`
+  @keyframes appear {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    60% {
+      transform: scale(1.05);
+    }
+
+    80% {
+      transform: scale(0.95);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -67,7 +88,7 @@ const RecordDetailsPageStyled = styled.div`
 
     &__info-box {
       z-index: 2;
-      padding: 90px 30px 30px 30px;
+      padding: 90px 35px 30px 35px;
       background: rgba(30, 30, 30, 0.73);
       width: 100%;
       height: 100vh;
@@ -76,21 +97,56 @@ const RecordDetailsPageStyled = styled.div`
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
+      text-shadow: 0px 0px 15px #000;
     }
 
     &__info {
       text-align: center;
+      font-size: 20px;
+      transition: all 200ms;
+      flex-direction: column;
+      animation-name: appear;
+      animation-duration: 1s;
+      color: #fff;
+      animation-timing-function: ease-in-out;
     }
 
     &__info-title {
+      margin-right: 10px;
+      display: -webkit-inline-box;
+      font-size: 1.5em;
+      font-weight: bold;
+      transition: all 200ms;
+      flex-direction: column;
+      animation-name: appear;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      color: #fff;
     }
 
-    &__track {
+    &__tracks-title {
+      margin: 5px;
+      display: -webkit-inline-box;
+      font-size: 24px;
+      font-weight: bold;
+      transition: all 200ms;
+      flex-direction: column;
+      animation-name: appear;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      color: #fff;
     }
 
-    &__track-list {
-      text-align: center;
+    &__tracks-box {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
     }
+  }
+
+  .off {
+    display: none;
   }
 `;
 
