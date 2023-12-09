@@ -29,7 +29,7 @@ describe("Given a RecordsPage", () => {
         preloadedState: {
           recordsState: {
             records: [],
-            currentDetailRecord: {} as RecordStructure,
+            currentRecord: {} as RecordStructure,
           },
         },
       });

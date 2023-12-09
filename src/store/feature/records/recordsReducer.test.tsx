@@ -12,11 +12,11 @@ describe("Given a recordsReducer", () => {
     test("Then it should update the list with the records", () => {
       const expectedLoadedRecords: RecordsStateStructure = {
         records: recordsMock,
-        currentDetailRecord: {} as RecordStructure,
+        currentRecord: {} as RecordStructure,
       };
       const currentState: RecordsStateStructure = {
         records: [],
-        currentDetailRecord: {} as RecordStructure,
+        currentRecord: {} as RecordStructure,
       };
 
       const loadedRecords = recordsReducer(
@@ -32,12 +32,12 @@ describe("Given a recordsReducer", () => {
     test("Then it should update the state with that Record", () => {
       const expectedUpdatedRecordsState: RecordsStateStructure = {
         records: recordsMock,
-        currentDetailRecord: recordsMock[0],
+        currentRecord: recordsMock[0],
       };
 
       const currentState: RecordsStateStructure = {
         records: [],
-        currentDetailRecord: {} as RecordStructure,
+        currentRecord: {} as RecordStructure,
       };
 
       const newRecordState = recordsReducer(
@@ -45,8 +45,8 @@ describe("Given a recordsReducer", () => {
         updateCurrentRecordActionCreator(recordsMock[0]),
       );
 
-      expect(newRecordState.currentDetailRecord).toStrictEqual(
-        expectedUpdatedRecordsState.currentDetailRecord,
+      expect(newRecordState.currentRecord).toStrictEqual(
+        expectedUpdatedRecordsState.currentRecord,
       );
     });
   });
