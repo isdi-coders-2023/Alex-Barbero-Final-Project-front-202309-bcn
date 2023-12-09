@@ -62,9 +62,10 @@ const useRecordsApi = (): UseRecordsApiStructure => {
             type: "error",
           }),
         );
+        navigate(`/home`);
       }
     },
-    [dispatch],
+    [dispatch, navigate],
   );
 
   const deleteRecord = useCallback(
