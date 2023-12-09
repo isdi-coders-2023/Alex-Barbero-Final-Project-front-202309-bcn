@@ -19,7 +19,7 @@ export const mockStore = configureStore({
   preloadedState: {
     recordsState: {
       records: recordsMock,
-      currentDetailRecord: recordMockDetails,
+      currentRecord: recordMockDetails,
     },
     uiState: {
       isLoading: false,

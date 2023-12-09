@@ -1,7 +1,10 @@
 import recordStructure from "../../store/feature/records/types";
 import RecordCardStyled from "./RecordCardStyled";
 import { useDispatch } from "react-redux";
-import { updateRecordStateActionCreator } from "../../store/feature/records/recordsSlice";
+import {
+  updateCurrentRecordActionCreator,
+  updateRecordStateActionCreator,
+} from "../../store/feature/records/recordsSlice";
 import useRecordsApi from "../../hooks/useRecordsApi";
 import { useNavigate } from "react-router-dom";
 
@@ -10,6 +13,7 @@ interface RecordCardProps {
 }
 
 const RecordCard = ({
+  record,
   record: { albumName, bandName, frontCover, _id, isActive },
 }: RecordCardProps): React.ReactElement => {
   const dispatch = useDispatch();
@@ -28,6 +32,11 @@ const RecordCard = ({
     navigate(`/${_id}`);
   };
 
+  const modifyCurrentRecord = () => {
+    dispatch(updateCurrentRecordActionCreator(record));
+    navigate("/modify");
+  };
+
   return (
     <RecordCardStyled onClick={toggleIconsVisibility}>
       <button
@@ -38,7 +47,6 @@ const RecordCard = ({
       >
         +
       </button>
-
       <img
         className="record__background"
         src="./record.png"
@@ -61,14 +69,17 @@ const RecordCard = ({
         />
       </div>
       <div className="record__icons-box">
-        <a className={isActive ? "record__button" : "off"} href="/home">
+        <button
+          className={isActive ? "record__button" : "off"}
+          onClick={modifyCurrentRecord}
+        >
           <img
             src="modifyRecord.webp"
             alt={isActive ? "modify On" : "modify Off"}
             width="62"
             height="62"
           />
-        </a>
+        </button>
         <button
           onClick={deleteCurrentRecord}
           className={isActive ? "record__button" : "off"}

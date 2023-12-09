@@ -3,14 +3,14 @@ import RecordStructure from "./types";
 
 export interface RecordsStateStructure {
   records: RecordStructure[];
-  currentDetailRecord: RecordStructure;
+  currentRecord: RecordStructure;
 }
 
 export type RecordsAxiosResponse = RecordStructure | undefined;
 
 export const recordsInitialState: RecordsStateStructure = {
   records: [],
-  currentDetailRecord: {
+  currentRecord: {
     _id: "",
     albumName: "",
     backCover: "",
@@ -66,7 +66,7 @@ const recordsSlice = createSlice({
       action: PayloadAction<RecordStructure>,
     ): RecordsStateStructure => ({
       ...currentState,
-      currentDetailRecord: action.payload,
+      currentRecord: action.payload,
     }),
   },
 });

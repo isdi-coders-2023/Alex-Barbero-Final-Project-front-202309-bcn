@@ -48,6 +48,7 @@ const useRecordsApi = (): UseRecordsApiStructure => {
     async (recordId: string): Promise<RecordStructure | undefined> => {
       try {
         dispatch(showLoadingActionCreator());
+
         const { data } = await axios.get<{ record: RecordStructure }>(
           `/records/${recordId}`,
         );
