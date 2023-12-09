@@ -5,10 +5,6 @@ import userEvent from "@testing-library/user-event";
 import { errorHandlers } from "../../mocks/errorHandlers";
 import { server } from "../../mocks/node";
 
-beforeEach(() => {
-  vi.resetAllMocks();
-});
-
 describe("Given a RecordsForm component", () => {
   const actionOnClick = vi.fn();
 

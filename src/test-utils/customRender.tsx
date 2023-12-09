@@ -5,12 +5,11 @@ import mainTheme from "../styles/mainTheme";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { recordsReducer } from "../store/feature/records/recordsSlice";
-import { recordsMock } from "../mocks/recordsMock";
+import { recordMockDetails, recordsMock } from "../mocks/recordsMock";
 import GlobalStyle from "../styles/GlobalStyle";
 import { uiReducer } from "../store/feature/ui/uiSlice";
 import { PropsWithChildren } from "react";
 import { store } from "../store";
-import RecordStructure from "../store/feature/records/types";
 
 export const mockStore = configureStore({
   reducer: {
@@ -20,7 +19,7 @@ export const mockStore = configureStore({
   preloadedState: {
     recordsState: {
       records: recordsMock,
-      currentDetailRecord: {} as RecordStructure,
+      currentDetailRecord: recordMockDetails,
     },
     uiState: {
       isLoading: false,
