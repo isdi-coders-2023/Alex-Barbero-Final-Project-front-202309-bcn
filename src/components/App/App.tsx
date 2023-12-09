@@ -6,8 +6,9 @@ import { useAppSelector } from "../../store/hooks";
 import Loading from "../Loading/Loading";
 import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 import Toast from "../Toast/Toast";
-import RecordsFormPage from "../../pages/RecordsFormPage/RecordsFormPage";
+import CreateFormPage from "../../pages/CreateFormPage/CreateFormPage";
 import RecordDetailsPage from "../../pages/RecordDetailsPage/RecordDetailsPage";
+import ModifyFormPage from "../../pages/ModifyFormPage/ModifyFormPage";
 
 const App = (): React.ReactElement => {
   const isLoading = useAppSelector((state) => state.uiState.isLoading);
@@ -22,8 +23,9 @@ const App = (): React.ReactElement => {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<RecordsPage />} />
-          <Route path="/add" element={<RecordsFormPage />} />
+          <Route path="/add" element={<CreateFormPage />} />
           <Route path={`/:recordId`} element={<RecordDetailsPage />} />
+          <Route path={`/modify`} element={<ModifyFormPage />} />
           <Route path="/not-found" element={<NotFoundPage />} />
         </Routes>
         <div className="footer" />

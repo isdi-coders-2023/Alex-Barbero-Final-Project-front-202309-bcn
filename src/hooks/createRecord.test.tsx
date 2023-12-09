@@ -22,7 +22,7 @@ describe("Given a addNewRecords function", () => {
         preloadedState: {
           recordsState: {
             records: [],
-            currentDetailRecord: {} as RecordStructure,
+            currentRecord: {} as RecordStructure,
           },
           uiState: {
             feedbackToast: { type: "success", message: "" },
@@ -54,7 +54,7 @@ describe("Given a addNewRecords function", () => {
         preloadedState: {
           recordsState: {
             records: [],
-            currentDetailRecord: {} as RecordStructure,
+            currentRecord: {} as RecordStructure,
           },
           uiState: {
             feedbackToast: { type: "success", message: "" },

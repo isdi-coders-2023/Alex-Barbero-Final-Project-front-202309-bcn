@@ -3,7 +3,7 @@ import useRecordsApi from "../../hooks/useRecordsApi";
 import PageStyled from "../RecordsPage/RecordsPageStyled";
 import RecordStructure from "../../store/feature/records/types";
 
-const RecordsFormPage = () => {
+const CreateFormPage = () => {
   const { addNewRecord } = useRecordsApi();
 
   const addCurrentRecord = async (newRecord: RecordStructure) => {
@@ -18,4 +18,4 @@ const RecordsFormPage = () => {
   );
 };
 
-export default RecordsFormPage;
+export default CreateFormPage;

@@ -11,13 +11,14 @@ const RecordDetailsPage = () => {
   const dispatch = useDispatch();
   const { getRecordById } = useRecordsApi();
   const currentRecord = useAppSelector(
-    (state) => state.recordsState.currentDetailRecord,
+    (state) => state.recordsState.currentRecord,
   );
 
   const [isInfoActive, setIsInfoActive] = useState<boolean>(false);
 
   useMemo(async () => {
     const record = await getRecordById(recordId!);
+
     if (!record) {
       return;
     }
@@ -75,7 +76,9 @@ const RecordDetailsPage = () => {
             <h3 className="details__tracks-title">Track list</h3>
             <ul>
               {splitedTrackList.map((track) => (
-                <li className="details__info">{track}</li>
+                <li key={track} className="details__info">
+                  {track}
+                </li>
               ))}
             </ul>
           </div>
