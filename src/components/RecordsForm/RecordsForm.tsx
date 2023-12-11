@@ -7,10 +7,15 @@ import RecordsFormStyled from "./RecordsFormStyled";
 
 interface RecordFormProps {
   submitAction: (newRecord: RecordStructure) => void;
-  initialState?: RecordStructureWithoutId;
+  initialState?: RecordStructure;
+  buttonText: string;
 }
 
-const RecordForm = ({ submitAction, initialState }: RecordFormProps) => {
+const RecordForm = ({
+  submitAction,
+  initialState,
+  buttonText,
+}: RecordFormProps) => {
   const initialRecord: RecordStructureWithoutId = {
     albumName: "",
     backCover: "",
@@ -146,7 +151,7 @@ const RecordForm = ({ submitAction, initialState }: RecordFormProps) => {
         isDisabled={isButtonDisabled}
         className="form__create-new"
         type="submit"
-        text="Create new Record"
+        text={buttonText}
       />
     </RecordsFormStyled>
   );
