@@ -121,14 +121,14 @@ const useRecordsApi = (): UseRecordsApiStructure => {
           record: RecordStructure;
         }>(`/records`, newRecord);
 
+        dispatch(addNewRecordActionCreator(record));
+        dispatch(hideLoadingActionCreator());
         dispatch(
           updateToastActionCreator({
             message: `'${newRecord.albumName} of ${newRecord.bandName}' was created ✅😍!`,
             type: "success",
           }),
         );
-        dispatch(addNewRecordActionCreator(record));
-        dispatch(hideLoadingActionCreator());
         navigate("/home");
       } catch (error) {
         dispatch(hideLoadingActionCreator());
@@ -163,14 +163,15 @@ const useRecordsApi = (): UseRecordsApiStructure => {
           record: RecordStructure;
         }>(`/records/${newRecord._id}`, recordData);
 
+        dispatch(modifyRecordActionCreator(newRecord));
+        dispatch(hideLoadingActionCreator());
+
         dispatch(
           updateToastActionCreator({
             message: `'${newRecord.albumName} of ${newRecord.bandName}' was modified ✅😍!`,
             type: "success",
           }),
         );
-        dispatch(modifyRecordActionCreator(newRecord));
-        dispatch(hideLoadingActionCreator());
         navigate("/home");
       } catch (error) {
         dispatch(hideLoadingActionCreator());

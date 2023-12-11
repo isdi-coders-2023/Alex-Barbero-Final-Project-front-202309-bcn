@@ -6,8 +6,6 @@ export interface RecordsStateStructure {
   currentRecord: RecordStructure;
 }
 
-export type RecordsAxiosResponse = RecordStructure | undefined;
-
 export const recordsInitialState: RecordsStateStructure = {
   records: [],
   currentRecord: {
