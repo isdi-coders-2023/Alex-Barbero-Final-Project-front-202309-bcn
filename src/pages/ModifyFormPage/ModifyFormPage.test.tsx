@@ -1,6 +1,5 @@
 import { screen } from "@testing-library/react";
 import customRenderWithProviders from "../../test-utils/customRenderWithProviders";
-
 import ModifyFormPage from "./ModifyFormPage";
 
 describe("Given a ModifyRecordPage", () => {
