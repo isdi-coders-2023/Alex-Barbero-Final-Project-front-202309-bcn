@@ -68,13 +68,18 @@ describe("Given an App component", () => {
 
   describe("When 'Los Chunguitos' card it's rendered and user clicks in button details", () => {
     test("It should show 'Record details' in a heading", async () => {
-      customRender(<App />);
-      server.use(...handlers);
-      const detailsButtons = screen.getAllByRole("button", {
-        name: "+",
+      customRenderWithProviders(<App />, {
+        initialPath: "/home",
+        preloadedState: {
+          recordsState: {
+            records: recordsMock,
+            currentRecord: recordMockDetails,
+          },
+        },
       });
 
-      await userEvent.click(detailsButtons[0]);
+      const detailButtonElements = screen.getAllByAltText("info On");
+      await userEvent.click(detailButtonElements[0]);
 
       const titleElement = screen.getByRole("heading", {
         name: "Record details",
@@ -98,11 +103,8 @@ describe("Given an App component", () => {
 
       server.use(...undefinedHandlers);
 
-      const detailsButtons = screen.getAllByRole("button", {
-        name: "+",
-      });
-
-      await userEvent.click(detailsButtons[0]);
+      const detailButtonElements = screen.getAllByAltText("info On");
+      await userEvent.click(detailButtonElements[0]);
 
       const titleElement = screen.getByRole("heading", {
         name: "My records",
@@ -155,13 +157,42 @@ describe("Given an App component", () => {
         },
       });
 
-      const detailButtonElements = screen.getAllByText("+");
+      const detailButtonElements = screen.getAllByAltText("info On");
       await userEvent.click(detailButtonElements[0]);
 
       const modifyButton = screen.getByRole("button", {
         name: "modifyRecord",
       });
       await userEvent.click(modifyButton);
+
+      const expectedHeadingElement = screen.getByRole("heading", {
+        name: expectedHeadingText,
+      });
+
+      await expect(expectedHeadingElement).toBeInTheDocument;
+    });
+  });
+
+  describe("When 'Los Chunguitos' Details page is rendered and user clicks in the info button", () => {
+    test("It should show 'Track list' in a heading", async () => {
+      const expectedHeadingText = "Track list";
+      server.use(...handlers);
+
+      customRenderWithProviders(<App />, {
+        initialPath: "/home",
+        preloadedState: {
+          recordsState: {
+            records: recordsMock,
+            currentRecord: recordsMock[0],
+          },
+        },
+      });
+
+      const detailButtonElements = screen.getAllByAltText("info On");
+      await userEvent.click(detailButtonElements[0]);
+
+      const infoButton = screen.getByAltText("info On");
+      await userEvent.click(infoButton);
 
       const expectedHeadingElement = screen.getByRole("heading", {
         name: expectedHeadingText,
