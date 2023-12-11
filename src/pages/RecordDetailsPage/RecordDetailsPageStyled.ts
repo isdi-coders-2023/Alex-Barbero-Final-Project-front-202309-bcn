@@ -30,8 +30,8 @@ const RecordDetailsPageStyled = styled.div`
   .main-title {
     font-family: fantasy;
     font-weight: lighter;
-    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
-    color: #fff;
+    text-shadow: 0px 0px 10px rgb(255 255 255);
+    color: ${({ theme }) => theme.colors.primary};
     text-transform: uppercase;
     width: 100%;
     height: 50px;
@@ -96,7 +96,7 @@ const RecordDetailsPageStyled = styled.div`
 
     &__info-box {
       z-index: 2;
-      padding: 90px 35px 30px 35px;
+      padding: 110px 35px 30px 35px;
       background: rgba(30, 30, 30, 0.73);
       width: 100vw;
       height: 100vh;
@@ -152,8 +152,15 @@ const RecordDetailsPageStyled = styled.div`
     }
 
     &__button {
-      z-index: 2;
+      z-index: 1;
       margin-right: 25px;
+    }
+
+    &__info-button {
+      position: relative;
+      top: 65px;
+      right: 90px;
+      z-index: 1;
     }
   }
 

@@ -45,7 +45,12 @@ const RecordCard = ({
         }
         onClick={seeCurrentRecordDetails}
       >
-        +
+        <img
+          src="infoWhite.webp"
+          alt={isActive ? "info On" : "info Off"}
+          width="62"
+          height="62"
+        />
       </button>
       <img
         className="record__background"

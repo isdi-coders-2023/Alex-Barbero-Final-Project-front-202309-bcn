@@ -106,13 +106,7 @@ const RecordCardStyled = styled.article`
       &-see-details {
         margin-bottom: -10px;
         margin-top: 20px;
-        padding: 8px 20px;
-        font-size: 50px;
-        border-radius: 50%;
-        font-family: "Keania One", serif;
-        background-color: #000000ab;
-        z-index: 3;
-        color: #ffffff;
+        z-index: 2;
       }
     }
   }

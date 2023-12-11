@@ -5,7 +5,7 @@ const NavigationStyled = styled.nav`
     display: flex;
     justify-content: center;
     gap: 20px;
-    align-items: center;
+    align-items: flex-end;
     width: 130px;
 
     &__link {
