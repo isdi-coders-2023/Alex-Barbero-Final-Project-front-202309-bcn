@@ -1,20 +1,20 @@
 import { renderHook, screen } from "@testing-library/react";
+import App from "../components/App/App";
 import { errorHandlers } from "../mocks/errorHandlers";
 import { server } from "../mocks/node";
-import { recordMockWithouId } from "../mocks/recordsMock";
+import { modifiedRecordMock } from "../mocks/recordsMock";
 import { store } from "../store";
-import { providerWrapper } from "../test-utils/customRender";
-import useRecordsApi from "./useRecordsApi";
-import customRenderWithProviders from "../test-utils/customRenderWithProviders";
-import App from "../components/App/App";
 import RecordStructure from "../store/feature/records/types";
+import { providerWrapper } from "../test-utils/customRender";
+import customRenderWithProviders from "../test-utils/customRenderWithProviders";
+import useRecordsApi from "./useRecordsApi";
 
-describe("Given a addNewRecords function", () => {
-  describe("When user enters the new Record data and create button is clicked", () => {
-    test("Then it should show a message 'New record was created!'...", async () => {
+describe("Given a modifyRecord function", () => {
+  describe("When user enters the new Record data and modify button is clicked", () => {
+    test("Then it should show a message 'New record was modified!'...", async () => {
       const {
         result: {
-          current: { addNewRecord },
+          current: { modifyRecord },
         },
       } = renderHook(() => useRecordsApi(), { wrapper: providerWrapper });
 
@@ -32,21 +32,21 @@ describe("Given a addNewRecords function", () => {
         initialPath: "/add",
       });
 
-      await addNewRecord(recordMockWithouId);
+      await modifyRecord(modifiedRecordMock);
 
       const updatedMessage = store.getState().uiState.feedbackToast.message;
 
       expect(updatedMessage).toBe(
-        "'Ave Maria of David bisbal' was created ✅😍!",
+        "'Dame veneno of Los chunguitos modificaos teteee' was modified ✅😍!",
       );
     });
   });
 
-  describe("When user enters the new Record data and create button is clicked", () => {
-    test("Then it should show a message 'New record was created!'...", async () => {
+  describe("When user enters the new Record data and modify button is clicked", () => {
+    test("Then it should show a message 'New record was modified!'...", async () => {
       const {
         result: {
-          current: { addNewRecord },
+          current: { modifyRecord },
         },
       } = renderHook(() => useRecordsApi(), { wrapper: providerWrapper });
 
@@ -64,29 +64,29 @@ describe("Given a addNewRecords function", () => {
         initialPath: "/add",
       });
 
-      await addNewRecord(recordMockWithouId);
+      await modifyRecord(modifiedRecordMock);
 
       const toastElement = screen.getByText("Loading...");
-      expect(toastElement).toBeInTheDocument();
+      await expect(toastElement).toBeInTheDocument();
     });
   });
 
   describe("When it renders Los chunguitos and it's addNew button is clicked but it fails", () => {
-    test("Then it should show a message Impossible to Create 'Dame veneno'...", async () => {
+    test("Then it should show a message Impossible to modify 'Dame veneno'...", async () => {
       server.use(...errorHandlers);
 
       const {
         result: {
-          current: { addNewRecord },
+          current: { modifyRecord },
         },
       } = renderHook(() => useRecordsApi(), { wrapper: providerWrapper });
 
-      await addNewRecord(recordMockWithouId);
+      await modifyRecord(modifiedRecordMock);
 
       const updatedMessage = store.getState().uiState.feedbackToast.message;
 
       expect(updatedMessage).toBe(
-        "Impossible to create 'Ave Maria of David bisbal' ⛔😒...",
+        "Impossible to modify 'Dame veneno of Los chunguitos modificaos teteee' ⛔😒...",
       );
     });
   });

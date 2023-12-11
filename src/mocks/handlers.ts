@@ -1,5 +1,5 @@
 import { http, HttpResponse } from "msw";
-import { recordsMock } from "./recordsMock";
+import { modifiedRecordMock, recordsMock } from "./recordsMock";
 
 const apiUrl = import.meta.env.VITE_API_URL;
 const mock = recordsMock;
@@ -15,6 +15,10 @@ export const handlers = [
 
   http.get(`${apiUrl}/records/2`, async () => {
     return HttpResponse.json({ record: recordsMock[0] });
+  }),
+
+  http.patch(`${apiUrl}/records/1`, async () => {
+    return HttpResponse.json({ record: modifiedRecordMock });
   }),
 
   http.post(`${apiUrl}/records`, async () => {

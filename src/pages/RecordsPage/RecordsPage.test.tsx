@@ -1,9 +1,10 @@
-import { screen, waitFor } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import customRenderWithProviders from "../../test-utils/customRenderWithProviders";
 import RecordsPage from "./RecordsPage";
 import { undefinedHandlers } from "../../mocks/errorHandlers";
 import { server } from "../../mocks/node";
 import RecordStructure from "../../store/feature/records/types";
+import App from "../../components/App/App";
 
 describe("Given a RecordsPage", () => {
   describe("When recieves a list of Records", () => {
@@ -16,15 +17,15 @@ describe("Given a RecordsPage", () => {
         name: expectedHeadingText,
       });
 
-      waitFor(() => expect(headingElement).toBeInTheDocument());
+      expect(headingElement).toBeInTheDocument();
     });
   });
 
-  describe("When recieves a list of Records", () => {
-    test("It should show 'My records' in a heading", () => {
+  describe("When it fails to recieve a list of records", () => {
+    test("It should show 'Records not found!' in a toast", () => {
       server.use(...undefinedHandlers);
 
-      customRenderWithProviders(<RecordsPage />, {
+      customRenderWithProviders(<App />, {
         initialPath: "/home",
         preloadedState: {
           recordsState: {

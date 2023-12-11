@@ -61,6 +61,15 @@ const recordsSlice = createSlice({
       ...currentState,
       records: [...currentState.records, action.payload],
     }),
+    modifyRecord: (
+      currentState: RecordsStateStructure,
+      action: PayloadAction<RecordStructure>,
+    ): RecordsStateStructure => ({
+      ...currentState,
+      records: currentState.records.map((record) =>
+        record._id === action.payload._id ? action.payload : record,
+      ),
+    }),
     updateCurrentRecord: (
       currentState: RecordsStateStructure,
       action: PayloadAction<RecordStructure>,
@@ -77,6 +86,7 @@ export const {
   updateRecordState: updateRecordStateActionCreator,
   addNewRecord: addNewRecordActionCreator,
   updateCurrentRecord: updateCurrentRecordActionCreator,
+  modifyRecord: modifyRecordActionCreator,
 } = recordsSlice.actions;
 
 export const recordsReducer = recordsSlice.reducer;

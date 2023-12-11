@@ -82,3 +82,16 @@ export const recordMockDetails: RecordStructure = {
   trackList:
     "Happy Boys & Girls, Barbie Girl, Good Morning Sunshine, Doctor Jones, Heat Of The Night, Be A mainSheet, Lollipop (Candyman), Roses Are Red, Turn Back Time, Calling You",
 };
+
+export const modifiedRecordMock = {
+  _id: "1",
+  bandName: "Los chunguitos modificaos teteee",
+  albumName: "Dame veneno",
+  frontCover: "https://i.ibb.co/ssBNRbH/kvelertak.webp",
+  backCover: "back1.png",
+  printImage: "print1.png",
+  cookieImage: "cookie1.png",
+  description: "Ke pum ke pam triki taun",
+  trackList: "Uan,chu,zri",
+  isActive: true,
+};

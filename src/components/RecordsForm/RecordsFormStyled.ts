@@ -48,7 +48,6 @@ const RecordsFormStyled = styled.form`
       background-color: #db1a00;
       box-shadow: 0px 20px 30px 0px rgba(69, 42, 124, 0.15);
       width: 100%;
-      height: 45px;
       padding: 10px;
       color: #fff;
       font-family: ${({ theme }) => theme.typography.mainFontFamily};

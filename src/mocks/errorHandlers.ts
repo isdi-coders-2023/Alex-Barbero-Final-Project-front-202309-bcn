@@ -19,6 +19,10 @@ export const errorHandlers = [
   http.delete(`${apiUrl}/records/1`, async () => {
     return HttpResponse.error();
   }),
+
+  http.patch(`${apiUrl}/records/1`, async () => {
+    return HttpResponse.error();
+  }),
 ];
 
 export const undefinedHandlers = [

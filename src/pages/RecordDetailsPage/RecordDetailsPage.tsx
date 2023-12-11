@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useRecordsApi from "../../hooks/useRecordsApi";
 import RecordDetailsPageStyled from "./RecordDetailsPageStyled";
 import { updateCurrentRecordActionCreator } from "../../store/feature/records/recordsSlice";
@@ -8,6 +8,7 @@ import { useMemo, useState } from "react";
 
 const RecordDetailsPage = () => {
   const { recordId } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { getRecordById } = useRecordsApi();
   const currentRecord = useAppSelector(
@@ -31,6 +32,11 @@ const RecordDetailsPage = () => {
     .slice(0, splitedDescription.length)
     .join(" ");
   const splitedTrackList = currentRecord.trackList.split(",");
+
+  const modifyCurrentRecord = () => {
+    dispatch(updateCurrentRecordActionCreator(currentRecord));
+    navigate("/modify");
+  };
 
   return (
     <RecordDetailsPageStyled>
@@ -56,13 +62,23 @@ const RecordDetailsPage = () => {
               height="173"
             />
           </button>
-          <img
-            src={currentRecord.frontCover}
-            alt={`${currentRecord.bandName} front`}
-            className="details__front"
-            width="323"
-            height="323"
-          />
+          <div className="details__front">
+            <button className="details__button" onClick={modifyCurrentRecord}>
+              <img
+                src="modifyRecord.webp"
+                alt="modifyRecord"
+                width="62"
+                height="62"
+              />
+            </button>
+            <img
+              className="details__front-image"
+              src={currentRecord.frontCover}
+              alt={`${currentRecord.bandName} front`}
+              width="323"
+              height="323"
+            />
+          </div>
         </div>
         <button
           onClick={() => setIsInfoActive(!isInfoActive)}

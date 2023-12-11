@@ -80,20 +80,27 @@ const RecordDetailsPageStyled = styled.div`
     }
 
     &__front {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
       width: 80%;
       height: auto;
       margin-top: -10px;
-      box-shadow: -10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+
+      &-image {
+        margin-top: -10px;
+        margin-top: -40px;
+        box-shadow: -10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+      }
     }
 
     &__info-box {
       z-index: 2;
       padding: 90px 35px 30px 35px;
       background: rgba(30, 30, 30, 0.73);
-      width: 100%;
+      width: 100vw;
       height: 100vh;
       display: flex;
-      justify-content: center;
       flex-direction: column;
       justify-content: space-evenly;
       align-items: center;
@@ -143,10 +150,16 @@ const RecordDetailsPageStyled = styled.div`
       flex-direction: column;
       align-items: center;
     }
+
+    &__button {
+      z-index: 2;
+      margin-right: 25px;
+    }
   }
 
   .off {
     display: none;
+    margin-right: 20px;
   }
 `;
 
