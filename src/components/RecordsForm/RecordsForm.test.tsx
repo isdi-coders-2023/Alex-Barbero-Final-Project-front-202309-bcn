@@ -12,7 +12,12 @@ describe("Given a RecordsForm component", () => {
     test("It should show 'Create new Record' in a Button", async () => {
       const expectedButtonText = "Create new Record";
 
-      customRender(<RecordsForm submitAction={actionOnClick} />);
+      customRender(
+        <RecordsForm
+          submitAction={actionOnClick}
+          buttonText="Create new Record"
+        />,
+      );
 
       const formButtonElement = screen.getByRole("button", {
         name: expectedButtonText,
@@ -22,7 +27,12 @@ describe("Given a RecordsForm component", () => {
     });
 
     test("It should show some empty inputs", async () => {
-      customRender(<RecordsForm submitAction={actionOnClick} />);
+      customRender(
+        <RecordsForm
+          submitAction={actionOnClick}
+          buttonText="Create new Record"
+        />,
+      );
 
       const textElements = screen.getAllByDisplayValue("");
 
@@ -34,7 +44,12 @@ describe("Given a RecordsForm component", () => {
     test("It should show 'Holita' inside an input", async () => {
       const expectedInputText = "Holita";
 
-      customRender(<RecordsForm submitAction={actionOnClick} />);
+      customRender(
+        <RecordsForm
+          submitAction={actionOnClick}
+          buttonText="Create new Record"
+        />,
+      );
 
       const inputElement = screen.getByLabelText("Band name:");
 
@@ -50,7 +65,12 @@ describe("Given a RecordsForm component", () => {
     test("It should call the onSubmit function", async () => {
       server.use(...errorHandlers);
 
-      customRender(<RecordsForm submitAction={actionOnClick} />);
+      customRender(
+        <RecordsForm
+          submitAction={actionOnClick}
+          buttonText="Create new Record"
+        />,
+      );
 
       const formElement = screen.getByRole("form", { name: "form" });
 
@@ -65,7 +85,12 @@ describe("Given a RecordsForm component", () => {
       const expectedInputText = "Holita";
       const expectedButtonText = "Create new Record";
 
-      customRender(<RecordsForm submitAction={actionOnClick} />);
+      customRender(
+        <RecordsForm
+          submitAction={actionOnClick}
+          buttonText="Create new Record"
+        />,
+      );
 
       const labels = [
         "Band name:",

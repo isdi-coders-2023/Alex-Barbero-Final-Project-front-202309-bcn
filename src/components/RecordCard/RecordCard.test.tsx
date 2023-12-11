@@ -1,9 +1,10 @@
-import { screen, waitFor } from "@testing-library/react";
-import { recordsMock } from "../../mocks/recordsMock";
+import { screen } from "@testing-library/react";
+import { recordMockDetails, recordsMock } from "../../mocks/recordsMock";
 import RecordCard from "./RecordCard";
 import userEvent from "@testing-library/user-event";
-import * as dispatcher from "../../store/hooks";
 import customRender from "../../test-utils/customRender";
+import App from "../App/App";
+import customRenderWithProviders from "../../test-utils/customRenderWithProviders";
 
 beforeEach(() => {
   vi.clearAllMocks();
@@ -36,55 +37,37 @@ describe("Given a RecordCard component", () => {
 
       await userEvent.click(element);
 
-      await waitFor(() => {
-        expect(
-          screen.getByRole("img", { name: "modify On" }),
-        ).toBeInTheDocument();
-      });
+      await expect(
+        screen.getByRole("img", { name: "modify On" }),
+      ).toBeInTheDocument();
     });
   });
 
   describe("When 'Los Chunguitos' card it's rendered and user clicks in button delete", () => {
     test("the user shouldn't see that card anymore", async () => {
-      const spyDispatch = vitest.spyOn(dispatcher, "useAppDispatch");
-
-      const dispatch = vitest.fn();
-
-      spyDispatch.mockReturnValue(dispatch);
-
       const losChunguitos = recordsMock[0];
 
-      customRender(<RecordCard record={losChunguitos} />);
-
-      const deleteButton = screen.getByRole("button", { name: "delete On" });
-
-      await userEvent.click(deleteButton);
-
-      waitFor(() => {
-        expect(dispatch).toHaveBeenCalled();
+      customRenderWithProviders(<App />, {
+        initialPath: "/home",
+        preloadedState: {
+          recordsState: {
+            records: recordsMock,
+            currentRecord: recordMockDetails,
+          },
+        },
       });
-
-      spyDispatch.mockClear();
-    });
-
-    test("the user shouldn't see that card anymore", async () => {
-      const losChunguitos = recordsMock[0];
-
-      customRender(<RecordCard record={losChunguitos} />);
 
       const deleteButton = screen.getByRole("button", {
         name: "delete On",
       });
 
-      await userEvent.click(deleteButton);
-
       const losChungitosElement = screen.getByRole("heading", {
         name: losChunguitos.bandName,
       });
 
-      waitFor(() => {
-        expect(losChungitosElement).not.toBeInTheDocument();
-      });
+      await userEvent.click(deleteButton);
+
+      await expect(losChungitosElement).not.toBeInTheDocument();
     });
   });
 });

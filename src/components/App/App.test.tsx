@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import App from "./App";
 import customRender from "../../test-utils/customRender";
@@ -37,7 +37,7 @@ describe("Given an App component", () => {
 
       const deleteButton = screen.getByRole("button", { name: "delete On" });
 
-      await fireEvent.click(deleteButton);
+      await userEvent.click(deleteButton);
 
       waitFor(async () =>
         expect(
@@ -137,6 +137,37 @@ describe("Given an App component", () => {
       });
 
       await expect(expectedHeadingElement).toBeInTheDocument();
+    });
+  });
+
+  describe("When 'Los Chunguitos' Details page is rendered and user clicks in button modify Los Chunguitos", () => {
+    test("It should show 'Modify Record' in a heading", async () => {
+      const expectedHeadingText = "Modify Record";
+      server.use(...handlers);
+
+      customRenderWithProviders(<App />, {
+        initialPath: "/home",
+        preloadedState: {
+          recordsState: {
+            records: recordsMock,
+            currentRecord: recordsMock[0],
+          },
+        },
+      });
+
+      const detailButtonElements = screen.getAllByText("+");
+      await userEvent.click(detailButtonElements[0]);
+
+      const modifyButton = screen.getByRole("button", {
+        name: "modifyRecord",
+      });
+      await userEvent.click(modifyButton);
+
+      const expectedHeadingElement = screen.getByRole("heading", {
+        name: expectedHeadingText,
+      });
+
+      await expect(expectedHeadingElement).toBeInTheDocument;
     });
   });
 });

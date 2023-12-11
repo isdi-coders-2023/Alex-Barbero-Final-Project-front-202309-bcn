@@ -1,4 +1,4 @@
-import { renderHook, screen, waitFor } from "@testing-library/react";
+import { renderHook, screen } from "@testing-library/react";
 import { errorHandlers } from "../mocks/errorHandlers";
 import { server } from "../mocks/node";
 import { recordMockWithouId } from "../mocks/recordsMock";
@@ -67,7 +67,7 @@ describe("Given a addNewRecords function", () => {
       await addNewRecord(recordMockWithouId);
 
       const toastElement = screen.getByText("Loading...");
-      waitFor(() => expect(toastElement).toBeInTheDocument());
+      expect(toastElement).toBeInTheDocument();
     });
   });
 
