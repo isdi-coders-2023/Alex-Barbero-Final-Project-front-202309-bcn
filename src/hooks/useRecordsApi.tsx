@@ -6,6 +6,7 @@ import axios from "axios";
 import {
   addNewRecordActionCreator,
   deleteRecordActionCreator,
+  modifyRecordActionCreator,
 } from "../store/feature/records/recordsSlice";
 import { useDispatch } from "react-redux";
 import {
@@ -20,6 +21,7 @@ interface UseRecordsApiStructure {
   getRecordById: (recordId: string) => Promise<RecordStructure | undefined>;
   deleteRecord: (recordId: string, albumName: string) => Promise<void>;
   addNewRecord: (newRecord: RecordStructureWithoutId) => Promise<void>;
+  modifyRecord: (newRecord: RecordStructure) => Promise<void>;
 }
 
 const useRecordsApi = (): UseRecordsApiStructure => {
@@ -40,7 +42,13 @@ const useRecordsApi = (): UseRecordsApiStructure => {
       dispatch(hideLoadingActionCreator());
       return data.records!;
     } catch (error) {
-      throw Error((error as Error).message);
+      dispatch(hideLoadingActionCreator());
+      dispatch(
+        updateToastActionCreator({
+          message: `Records not found! 🚫`,
+          type: "error",
+        }),
+      );
     }
   }, [dispatch]);
 
@@ -135,11 +143,54 @@ const useRecordsApi = (): UseRecordsApiStructure => {
     [dispatch, navigate],
   );
 
+  const modifyRecord = useCallback(
+    async (newRecord: RecordStructure): Promise<void> => {
+      const recordData: RecordStructureWithoutId = {
+        albumName: newRecord.albumName,
+        backCover: newRecord.backCover,
+        bandName: newRecord.bandName,
+        cookieImage: newRecord.cookieImage,
+        description: newRecord.description,
+        frontCover: newRecord.frontCover,
+        printImage: newRecord.printImage,
+        trackList: newRecord.trackList,
+      };
+
+      try {
+        dispatch(showLoadingActionCreator());
+
+        await axios.patch<{
+          record: RecordStructure;
+        }>(`/records/${newRecord._id}`, recordData);
+
+        dispatch(
+          updateToastActionCreator({
+            message: `'${newRecord.albumName} of ${newRecord.bandName}' was modified ✅😍!`,
+            type: "success",
+          }),
+        );
+        dispatch(modifyRecordActionCreator(newRecord));
+        dispatch(hideLoadingActionCreator());
+        navigate("/home");
+      } catch (error) {
+        dispatch(hideLoadingActionCreator());
+        dispatch(
+          updateToastActionCreator({
+            message: `Impossible to modify '${newRecord.albumName} of ${newRecord.bandName}' ⛔😒...`,
+            type: "error",
+          }),
+        );
+      }
+    },
+    [dispatch, navigate],
+  );
+
   return {
     getRecords,
     getRecordById,
     deleteRecord,
     addNewRecord,
+    modifyRecord,
   };
 };
 
