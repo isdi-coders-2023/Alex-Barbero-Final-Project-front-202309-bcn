@@ -54,7 +54,7 @@ const RecordCard = ({
       </button>
       <img
         className="record__background"
-        src="./record.png"
+        src="./record.webp"
         alt="record background"
         width="225"
         height="225"
@@ -70,7 +70,6 @@ const RecordCard = ({
           alt={albumName}
           width="323"
           height="323"
-          title={`record ${bandName}`}
         />
       </div>
       <div className="record__icons-box">

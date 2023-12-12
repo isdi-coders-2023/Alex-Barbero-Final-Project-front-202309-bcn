@@ -5,7 +5,7 @@ const NotFoundPage = () => {
     <NotFoundPageStyled>
       <img
         className="not-found__image"
-        src="brokenRecord.png"
+        src="brokenRecord.webp"
         alt="broken record"
         width="335"
         height="334"

@@ -91,9 +91,9 @@ h2 {
 
   .background {
     margin-top: 50px;
+    height: 200vh;
     z-index: -1;
     width: 100%;
-    height: 100vh;
     position: fixed;
     background-image: url(./background.webp);
     background-size: contain;
