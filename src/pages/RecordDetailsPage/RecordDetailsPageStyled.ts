@@ -22,94 +22,110 @@ const RecordDetailsPageStyled = styled.div`
     }
   }
 
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
   .main-title {
-    font-family: fantasy;
+    font-family: "Keania One", serif;
     font-weight: lighter;
-    text-shadow: 0px 0px 10px rgb(255 255 255);
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     color: ${({ theme }) => theme.colors.primary};
     text-transform: uppercase;
     width: 100%;
     height: 50px;
     position: fixed;
+    padding: 10px;
     top: 90px;
     z-index: 3;
-    padding: 10px;
     text-align: center;
+
+    &-active {
+      background: linear-gradient(
+        180deg,
+        #5b5b5b 69.1%,
+        #5b5b5bb0 87.33%,
+        #5b5b5b6b 100%
+      );
+      color: #fff;
+    }
   }
 
   .details {
     display: flex;
-    height: 100vh;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
-    &__images {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: absolute;
-      justify-content: flex-end;
-      height: 90vh;
-    }
-    &__images-box {
-      width: 80%;
-      display: flex;
-    }
-
-    &__print {
-      width: 60vw;
-      height: 60vw;
-      transform: rotate(-24.339deg);
-      box-shadow: -10px 10px 10px 0px rgba(0, 0, 0, 0.5);
-      margin-right: -25vw;
-      margin-left: 10vw;
+    &__posters-box {
+      position: fixed;
+      bottom: 30px;
     }
 
     &__cookie {
-      width: 40vw;
-      height: 40vw;
+      width: 130px;
+      height: 130px;
+      position: relative;
+      left: 100px;
       z-index: 1;
       border-radius: 50%;
       box-shadow: -10px 10px 10px 0px rgba(0, 0, 0, 0.5);
     }
 
-    &__front {
+    &__print-box {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
-      width: 80%;
+      margin-top: -150px;
+      align-items: center;
+    }
+
+    &__print {
+      width: 180px;
+      margin-top: -50px;
       height: auto;
-      margin-top: -10px;
+      transform: rotate(-24.339deg);
+      box-shadow: -10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    &__info-button {
+      z-index: 1;
+      position: relative;
+      right: 66px;
+      z-index: 1;
+    }
+
+    &__front {
+      display: flex;
+      margin-top: -30px;
+      flex-direction: column;
+      align-items: center;
+      align-items: flex-end;
 
       &-image {
-        margin-top: -10px;
+        width: 230px;
+        height: auto;
         margin-top: -40px;
         box-shadow: -10px 10px 10px 0px rgba(0, 0, 0, 0.5);
       }
     }
 
+    &__modify-button {
+      z-index: 1;
+      margin-right: 20px;
+    }
+
+    &__info-background {
+      position: fixed;
+      top: 90px;
+      width: 100%;
+      background: rgb(30 30 30 / 71%);
+      height: 100vh;
+    }
+
     &__info-box {
       z-index: 2;
-      padding: 110px 35px 30px 35px;
-      background: rgba(30, 30, 30, 0.73);
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      align-items: center;
+      padding: 65px 30px;
       text-shadow: 0px 0px 15px #000;
     }
 
     &__info {
       text-align: center;
-      font-size: 20px;
       transition: all 200ms;
       flex-direction: column;
       animation-name: appear;
@@ -146,27 +162,67 @@ const RecordDetailsPageStyled = styled.div`
 
     &__tracks-box {
       display: flex;
+      margin-top: 50px;
       width: 100%;
       flex-direction: column;
       align-items: center;
-    }
-
-    &__button {
-      z-index: 1;
-      margin-right: 25px;
-    }
-
-    &__info-button {
-      position: relative;
-      top: 65px;
-      right: 90px;
-      z-index: 1;
     }
   }
 
   .off {
     display: none;
     margin-right: 20px;
+  }
+
+  @media (min-width: 500px) {
+    .details {
+      justify-content: center;
+
+      &__posters-box {
+        display: flex;
+        position: fixed;
+        bottom: 15vh;
+        align-items: center;
+      }
+
+      &__images {
+        flex-direction: row;
+      }
+
+      &__cookie {
+        width: 200px;
+        height: auto;
+      }
+
+      &__images {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        justify-content: center;
+        margin-top: 50px;
+        height: 50vh;
+        align-items: center;
+      }
+
+      &__info-button {
+        z-index: 2;
+        width: 62px;
+        height: 62px;
+      }
+
+      &__front-image {
+        width: 323px;
+      }
+
+      &__print-box {
+        margin-top: 0;
+      }
+
+      &__print {
+        width: 245px;
+      }
+    }
   }
 `;
 

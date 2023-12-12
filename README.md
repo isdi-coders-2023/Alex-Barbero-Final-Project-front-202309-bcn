@@ -1,27 +1,56 @@
-# React + TypeScript + Vite
+<p align="center"><a href="https://barru-fat.web.app/" target="_blank" rel="noopener noreferrer"><img width="300" src="https://barru-fat.web.app/logo1barru.png" alt="Barrufat logo"></a></p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# MyBox FrontEnd [https://alex-barbero-202309-bcn-front.netlify.app/]
 
-Currently, two official plugins are available:
+FrontEnd CRUD project of a Vynil Records collection:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Records list page
+- Record details page
+- Form page to create a new record
+- Form page to modify a current record
+- Ui feedback with toastify
+- Not-found page
 
-## Expanding the ESLint configuration
+## Get Started 🚀
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Link to clone this repository to your editor:
+https://github.com/isdi-coders-2023/Alex-Barbero-Final-Project-front-202309-bcn
 
-- Configure the top-level `parserOptions` property like this:
+### Installation 🔧
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Deployment 📦
+
+```bash
+npm run build
+npm run dev
+```
+
+## Project state ⚙️
+
+This frontend project fetches resources from the API https://alex-barbero-202309-bcn-back.onrender.com so in order to get data properly include the enviroment variable into an .env file in your project root:
+
+VITE_API_URL=https://alex-barbero-202309-bcn-back.onrender.com
+
+## Code quality 📋
+
+- W3C HTML Validator results --> 100%
+- W3C CSS Validator results --> 100%
+- Lighthouse -->
+
+## Built with 🛠️
+
+- React Js
+- Styled components
+- React Router Dom
+- Axios
+- Redux (ReduxJs toolkit)
+- Toastify
+- React Testing library
+- Mock Service Worker for testing
+- Visual Studio Code
+
+### ¡Thanks for your time and don't forget to checkout mi Porfolio at www.barru-fat.web.app😊😊!

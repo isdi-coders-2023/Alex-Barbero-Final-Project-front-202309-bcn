@@ -78,8 +78,36 @@ h2 {
     }
   }
 
+  textarea {
+    color: #2f2f2f;
+    border-radius: 10px;
+    background: #ffffffb5;
+    width: 100%;
+    height: 40px;
+    text-align: start;
+    font-size: 12px;
+    outline: 0px none transparent;
+  }
 
+  .background {
+    margin-top: 50px;
+    height: 200vh;
+    z-index: -1;
+    width: 100%;
+    position: fixed;
+    background-image: url(./background.webp);
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+  }
 
+    @media (min-width: 410px) {
+    .background {
+      background-image: url(./backgroundBig.webp);
+      background-size: contain;
+      background-repeat: repeat-x;
+    }
+  }
 
   .not-found {
   width: 100%;

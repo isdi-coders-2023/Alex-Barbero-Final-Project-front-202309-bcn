@@ -7,7 +7,7 @@ const PageStyled = styled.div`
   align-items: center;
 
   .main-title {
-    font-family: fantasy;
+    font-family: ${({ theme }) => theme.typography.contentFontFamily};
     font-weight: lighter;
     text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
     background: linear-gradient(
