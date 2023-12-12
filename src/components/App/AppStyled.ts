@@ -10,6 +10,7 @@ const AppStyled = styled.main`
     background-image: url(./background.webp);
     background-size: contain;
     background-repeat: no-repeat;
+    opacity: 0.5;
   }
 
   .footer {
@@ -19,6 +20,14 @@ const AppStyled = styled.main`
     z-index: 3;
     height: 10px;
     background-color: #fff;
+  }
+
+  @media (min-width: 410px) {
+    .background {
+      background-image: url(./backgroundBig.webp);
+      background-size: contain;
+      background-repeat: repeat-x;
+    }
   }
 `;
 

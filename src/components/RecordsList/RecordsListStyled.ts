@@ -10,25 +10,6 @@ const RecordsListStyled = styled.ul`
   justify-content: space-around;
   position: relative;
 
-  .footer-box {
-    position: fixed;
-    bottom: 0;
-
-    &__image {
-      width: 320px;
-      height: auto;
-    }
-
-    &--down {
-      z-index: 3;
-
-      &__image {
-        width: 320px;
-        height: auto;
-      }
-    }
-  }
-
   @media (max-width: 1000px) {
     grid-template-columns: repeat(2, 1fr);
   }

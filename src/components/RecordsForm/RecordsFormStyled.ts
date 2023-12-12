@@ -3,6 +3,7 @@ import styled from "styled-components";
 const RecordsFormStyled = styled.form`
   display: flex;
   width: 85%;
+  max-width: 600px;
   margin-top: 175px;
   margin-bottom: 100px;
   padding: 41px 25px 28px 25px;

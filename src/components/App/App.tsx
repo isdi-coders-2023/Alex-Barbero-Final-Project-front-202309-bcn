@@ -19,7 +19,6 @@ const App = (): React.ReactElement => {
       {isLoading && <Loading />}
       <AppStyled>
         <div className="background" />
-        <Toast />
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<RecordsPage />} />
@@ -28,6 +27,7 @@ const App = (): React.ReactElement => {
           <Route path={`/modify`} element={<ModifyFormPage />} />
           <Route path="/not-found" element={<NotFoundPage />} />
         </Routes>
+        <Toast />
         <div className="footer" />
       </AppStyled>
     </>

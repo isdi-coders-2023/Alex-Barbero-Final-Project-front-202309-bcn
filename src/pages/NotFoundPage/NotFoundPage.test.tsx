@@ -9,9 +9,7 @@ describe("Given a NotFoundPage", () => {
 
       customRenderWithProviders(<NotFoundPage />);
 
-      const headingElement = screen.getByRole("heading", {
-        name: expectedHeadingText,
-      });
+      const headingElement = screen.getByText(expectedHeadingText);
 
       expect(headingElement).toBeInTheDocument();
     });

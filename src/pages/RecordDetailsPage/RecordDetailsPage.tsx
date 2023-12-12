@@ -44,9 +44,12 @@ const RecordDetailsPage = () => {
       <section className="details">
         <div className="details__images">
           <button
-            className="details__images-box"
             onClick={() => setIsInfoActive(!isInfoActive)}
+            className="details__info-button"
           >
+            <img src="infoBlack.webp" alt="info On" width="62" height="62" />
+          </button>
+          <div className="details__images-box">
             <img
               src={currentRecord.printImage}
               alt={`${currentRecord.bandName} print`}
@@ -61,7 +64,7 @@ const RecordDetailsPage = () => {
               width="173"
               height="173"
             />
-          </button>
+          </div>
           <div className="details__front">
             <button className="details__button" onClick={modifyCurrentRecord}>
               <img

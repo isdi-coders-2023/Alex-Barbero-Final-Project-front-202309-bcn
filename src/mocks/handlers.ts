@@ -13,10 +13,6 @@ export const handlers = [
     return HttpResponse.json({ record: recordsMock[0] });
   }),
 
-  http.get(`${apiUrl}/records/2`, async () => {
-    return HttpResponse.json({ record: recordsMock[0] });
-  }),
-
   http.patch(`${apiUrl}/records/1`, async () => {
     return HttpResponse.json({ record: modifiedRecordMock });
   }),

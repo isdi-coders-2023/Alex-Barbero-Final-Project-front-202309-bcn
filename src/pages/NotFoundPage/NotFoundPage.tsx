@@ -10,7 +10,7 @@ const NotFoundPage = () => {
         width="335"
         height="334"
       />
-      <h2 className="not-found__text">Ouch! 404 page not found...</h2>
+      <span className="not-found__text">Ouch! 404 page not found...</span>
     </NotFoundPageStyled>
   );
 };

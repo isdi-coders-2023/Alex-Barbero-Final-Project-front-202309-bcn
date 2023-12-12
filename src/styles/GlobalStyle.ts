@@ -59,9 +59,63 @@ h2 {
   margin: 0;
 }
 
+  .footer-box {
+    position: fixed;
+    bottom: 0;
+
+    &__image {
+      width: 320px;
+      height: auto;
+    }
+
+    &--down {
+      z-index: 3;
+
+      &__image {
+        width: 320px;
+        height: auto;
+      }
+    }
+  }
+
+
+
+
+  .not-found {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  display: flex;
+        font-size: ${({ theme }) => theme.typography.principalInfoSize};
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+    &__image {
+      width: 230px;
+      height: 230px;
+    }
+
+    &__text {
+      width: 80%;
+      margin: 20px;
+      font-weight: 800;
+      text-align: center;
+      color: #000;
+      text-transform: uppercase;
+    }
+  }
 .off {
   display:none;
 }
+
+
+@media (min-width: 410px) {
+  .footer-box {
+    display:none;
+  }
+}
+
 `;
 
 export default GlobalStyle;

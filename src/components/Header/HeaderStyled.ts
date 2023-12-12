@@ -12,6 +12,11 @@ const HeaderStyled = styled.header`
   background-color: ${({ theme }) => theme.colors.dark};
   color: ${({ theme }) => theme.colors.light};
   z-index: 3;
+
+  .logo {
+    height: 75px;
+    width: auto;
+  }
 `;
 
 export default HeaderStyled;

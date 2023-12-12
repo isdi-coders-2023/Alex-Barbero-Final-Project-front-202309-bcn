@@ -4,7 +4,13 @@ import HeaderStyled from "./HeaderStyled";
 const Header = (): React.ReactElement => {
   return (
     <HeaderStyled>
-      <img src="resizedLogo.webp" alt="my box logo" width="75" height="75" />
+      <img
+        className="logo"
+        src="logo.webp"
+        alt="my box logo"
+        width="123"
+        height="115"
+      />
       <Navigation />
     </HeaderStyled>
   );
