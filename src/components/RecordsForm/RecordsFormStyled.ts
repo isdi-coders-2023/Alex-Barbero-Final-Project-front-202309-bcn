@@ -4,7 +4,7 @@ const RecordsFormStyled = styled.form`
   display: flex;
   width: 85%;
   max-width: 600px;
-  margin-top: 175px;
+  margin-top: 100px;
   margin-bottom: 100px;
   padding: 41px 25px 28px 25px;
   flex-direction: column;
@@ -42,6 +42,7 @@ const RecordsFormStyled = styled.form`
       border-radius: 10px;
       background: rgba(255, 255, 255, 0.71);
       padding: 10px;
+      resize: vertical;
     }
 
     &__create-new {

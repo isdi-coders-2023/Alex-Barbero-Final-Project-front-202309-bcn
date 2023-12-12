@@ -40,16 +40,25 @@ const RecordDetailsPage = () => {
 
   return (
     <RecordDetailsPageStyled>
-      <h1 className="main-title">Record details</h1>
+      <h1 className={`main-title ${isInfoActive ? "main-title-active" : ""}`}>
+        Record details
+      </h1>
       <section className="details">
-        <div className="details__images">
-          <button
-            onClick={() => setIsInfoActive(!isInfoActive)}
-            className="details__info-button"
-          >
-            <img src="infoBlack.webp" alt="info On" width="62" height="62" />
-          </button>
-          <div className="details__images-box">
+        <div className="details__posters-box">
+          <img
+            src={currentRecord.cookieImage}
+            alt={`${currentRecord.bandName} cookie`}
+            className="details__cookie"
+            width="173"
+            height="173"
+          />
+          <div className="details__print-box">
+            <button
+              onClick={() => setIsInfoActive(!isInfoActive)}
+              className="details__info-button"
+            >
+              <img src="infoBlack.webp" alt="info On" width="62" height="62" />
+            </button>
             <img
               src={currentRecord.printImage}
               alt={`${currentRecord.bandName} print`}
@@ -57,16 +66,13 @@ const RecordDetailsPage = () => {
               width="238"
               height="238"
             />
-            <img
-              src={currentRecord.cookieImage}
-              alt={`${currentRecord.bandName} cookie`}
-              className="details__cookie"
-              width="173"
-              height="173"
-            />
           </div>
+
           <div className="details__front">
-            <button className="details__button" onClick={modifyCurrentRecord}>
+            <button
+              className="details__modify-button"
+              onClick={modifyCurrentRecord}
+            >
               <img
                 src="modifyRecord.webp"
                 alt="modifyRecord"
@@ -83,6 +89,7 @@ const RecordDetailsPage = () => {
             />
           </div>
         </div>
+        <div className={isInfoActive ? "details__info-background" : "off"} />
         <button
           onClick={() => setIsInfoActive(!isInfoActive)}
           className={`details__info-box ${isInfoActive ? "" : "off"}`}
