@@ -7,7 +7,7 @@ import App from "./App";
 import { handlers } from "../../mocks/handlers";
 
 describe("Given an App component", () => {
-  describe("When 'Los Chunguitos' card it's rendered and user clicks in button modify Los Chunguitos", () => {
+  describe("When 'Los Chunguitos' modify page it's rendered and user clicks in button modify Los Chunguitos", () => {
     test("It should show 'New Records' in a heading", async () => {
       customRenderWithProviders(<App />, {
         initialPath: `/modify/${modifiedRecordMock._id}`,
@@ -20,6 +20,32 @@ describe("Given an App component", () => {
       });
 
       server.use(...handlers);
+
+      const modifyButton = screen.getByRole("button", {
+        name: "Modify",
+      });
+
+      await userEvent.click(modifyButton);
+
+      const titleElement = screen.getByRole("heading", {
+        name: "My records",
+      });
+
+      await expect(titleElement).toBeInTheDocument();
+    });
+  });
+
+  describe("When 'Los Chunguitos' modify page it's rendered and user clicks in button modify but the id is invalid", () => {
+    test.only("It should show 'New Records' in a heading", async () => {
+      customRenderWithProviders(<App />, {
+        initialPath: `/modify/1234`,
+        preloadedState: {
+          recordsState: {
+            records: recordsMock,
+            currentRecord: modifiedRecordMock,
+          },
+        },
+      });
 
       const modifyButton = screen.getByRole("button", {
         name: "Modify",

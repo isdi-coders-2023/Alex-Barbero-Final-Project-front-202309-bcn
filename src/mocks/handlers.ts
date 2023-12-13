@@ -17,6 +17,10 @@ export const handlers = [
     return HttpResponse.json({ record: modifiedRecordMock });
   }),
 
+  http.patch(`${apiUrl}/records/1234`, async () => {
+    return HttpResponse.json({ record: undefined });
+  }),
+
   http.post(`${apiUrl}/records`, async () => {
     return HttpResponse.json({ record: recordsMock[1] });
   }),
