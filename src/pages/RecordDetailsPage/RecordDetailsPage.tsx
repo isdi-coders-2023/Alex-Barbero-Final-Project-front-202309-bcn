@@ -35,7 +35,7 @@ const RecordDetailsPage = () => {
 
   const modifyCurrentRecord = () => {
     dispatch(updateCurrentRecordActionCreator(currentRecord));
-    navigate("/modify");
+    navigate(`/modify/${recordId}`);
   };
 
   return (
@@ -57,7 +57,7 @@ const RecordDetailsPage = () => {
               onClick={() => setIsInfoActive(!isInfoActive)}
               className="details__info-button"
             >
-              <img src="infoBlack.webp" alt="info On" width="62" height="62" />
+              <img src="/infoBlack.webp" alt="info On" width="62" height="62" />
             </button>
             <img
               src={currentRecord.printImage}
@@ -74,7 +74,7 @@ const RecordDetailsPage = () => {
               onClick={modifyCurrentRecord}
             >
               <img
-                src="modifyRecord.webp"
+                src="/modifyRecord.webp"
                 alt="modifyRecord"
                 width="62"
                 height="62"

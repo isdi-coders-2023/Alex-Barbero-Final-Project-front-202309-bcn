@@ -2,7 +2,6 @@ import { renderHook, screen } from "@testing-library/react";
 import App from "../components/App/App";
 import { errorHandlers } from "../mocks/errorHandlers";
 import { server } from "../mocks/node";
-import { modifiedRecordMock } from "../mocks/recordsMock";
 import { store } from "../store";
 import RecordStructure from "../store/feature/records/types";
 import { providerWrapper } from "../test-utils/customRender";
@@ -10,6 +9,18 @@ import customRenderWithProviders from "../test-utils/customRenderWithProviders";
 import useRecordsApi from "./useRecordsApi";
 
 describe("Given a modifyRecord function", () => {
+  const modifiedMock = {
+    bandName: "Los chunguitos modificaos teteee",
+    albumName: "Dame veneno",
+    frontCover: "https://i.ibb.co/ssBNRbH/kvelertak.webp",
+    backCover: "back1.png",
+    printImage: "print1.png",
+    cookieImage: "cookie1.png",
+    description: "Ke pum ke pam triki taun",
+    trackList: "Uan,chu,zri",
+    isActive: true,
+  };
+
   describe("When user enters the new Record data and modify button is clicked", () => {
     test("Then it should show a message 'New record was modified!'...", async () => {
       const {
@@ -32,7 +43,7 @@ describe("Given a modifyRecord function", () => {
         initialPath: "/add",
       });
 
-      await modifyRecord(modifiedRecordMock);
+      await modifyRecord(modifiedMock, "1");
 
       const updatedMessage = store.getState().uiState.feedbackToast.message;
 
@@ -64,7 +75,7 @@ describe("Given a modifyRecord function", () => {
         initialPath: "/add",
       });
 
-      await modifyRecord(modifiedRecordMock);
+      await modifyRecord(modifiedMock, "1");
 
       const toastElement = screen.getByText("Loading...");
       await expect(toastElement).toBeInTheDocument();
@@ -81,7 +92,7 @@ describe("Given a modifyRecord function", () => {
         },
       } = renderHook(() => useRecordsApi(), { wrapper: providerWrapper });
 
-      await modifyRecord(modifiedRecordMock);
+      await modifyRecord(modifiedMock, "1");
 
       const updatedMessage = store.getState().uiState.feedbackToast.message;
 

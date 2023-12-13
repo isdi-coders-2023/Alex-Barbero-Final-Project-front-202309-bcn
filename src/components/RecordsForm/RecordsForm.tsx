@@ -4,34 +4,38 @@ import RecordStructure, {
 } from "../../store/feature/records/types";
 import Button from "../Button/Button";
 import RecordsFormStyled from "./RecordsFormStyled";
+import { useAppSelector } from "../../store/hooks";
 
 interface RecordFormProps {
   submitAction: (newRecord: RecordStructure) => void;
-  initialState?: RecordStructure;
   buttonText: string;
 }
 
-const RecordForm = ({
-  submitAction,
-  initialState,
-  buttonText,
-}: RecordFormProps) => {
-  const initialRecord: RecordStructureWithoutId = {
-    albumName: "",
-    backCover: "",
-    bandName: "",
-    cookieImage: "",
-    description: "",
-    frontCover: "",
-    printImage: "",
-    trackList: "",
-  };
+const RecordForm = ({ submitAction, buttonText }: RecordFormProps) => {
+  const currentRecord = useAppSelector(
+    (state) => state.recordsState.currentRecord,
+  );
 
-  const currentInitialState = initialState ?? initialRecord;
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    setNewRecord({
+      albumName: currentRecord.albumName,
+      backCover: currentRecord.backCover,
+      bandName: currentRecord.bandName,
+      cookieImage: currentRecord.cookieImage,
+      description: currentRecord.description,
+      frontCover: currentRecord.frontCover,
+      printImage: currentRecord.printImage,
+      trackList: currentRecord.trackList,
+    });
+  }, [currentRecord]);
 
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
   const [newRecord, setNewRecord] =
-    useState<RecordStructureWithoutId>(currentInitialState);
+    useState<RecordStructureWithoutId>(currentRecord);
 
   const updateNewRecord = (
     event:
@@ -86,7 +90,7 @@ const RecordForm = ({
       </label>
       <input
         className="form__input"
-        type="text"
+        type="url"
         id="frontCover"
         value={newRecord.frontCover}
         onChange={updateNewRecord}
@@ -98,7 +102,7 @@ const RecordForm = ({
       <input
         required
         className="form__input"
-        type="text"
+        type="url"
         id="backCover"
         value={newRecord.backCover}
         onChange={updateNewRecord}
@@ -109,7 +113,7 @@ const RecordForm = ({
       <input
         required
         className="form__input"
-        type="text"
+        type="url"
         id="printImage"
         value={newRecord.printImage}
         onChange={updateNewRecord}
@@ -120,7 +124,7 @@ const RecordForm = ({
       <input
         required
         className="form__input"
-        type="text"
+        type="url"
         id="cookieImage"
         value={newRecord.cookieImage}
         onChange={updateNewRecord}
@@ -147,7 +151,6 @@ const RecordForm = ({
       />
 
       <Button
-        title="addNew"
         isDisabled={isButtonDisabled}
         className="form__create-new"
         type="submit"

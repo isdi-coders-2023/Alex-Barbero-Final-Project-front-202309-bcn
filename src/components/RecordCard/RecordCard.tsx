@@ -29,12 +29,12 @@ const RecordCard = ({
   };
 
   const seeCurrentRecordDetails = () => {
-    navigate(`/${_id}`);
+    navigate(`/details/${_id}`);
   };
 
   const modifyCurrentRecord = () => {
     dispatch(updateCurrentRecordActionCreator(record));
-    navigate("/modify");
+    navigate(`/modify/${_id}`);
   };
 
   return (

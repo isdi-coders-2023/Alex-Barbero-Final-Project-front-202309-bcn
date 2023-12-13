@@ -11,7 +11,7 @@ const Navigation = (): React.ReactElement => {
               <img
                 aria-label={isActive ? "go home On" : "go home Off"}
                 alt={isActive ? "go home On" : "go home Off"}
-                src={isActive ? "openBox.webp" : "closedBox.webp"}
+                src={isActive ? "/openBox.webp" : "/closedBox.webp"}
                 width={isActive ? "54" : "46"}
                 height={isActive ? "49" : "42"}
               />
@@ -24,7 +24,7 @@ const Navigation = (): React.ReactElement => {
               <img
                 aria-label={isActive ? "add new On" : "add new Off"}
                 alt={isActive ? "add new On" : "add new Off"}
-                src={isActive ? "addOn.webp" : "addOff.webp"}
+                src={isActive ? "/addOn.webp" : "/addOff.webp"}
                 width={isActive ? "53" : "39"}
                 height={isActive ? "49" : "36"}
               />

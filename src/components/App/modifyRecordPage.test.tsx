@@ -1,21 +1,20 @@
 import userEvent from "@testing-library/user-event";
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { server } from "../../mocks/node";
-import { recordsMock } from "../../mocks/recordsMock";
+import { modifiedRecordMock, recordsMock } from "../../mocks/recordsMock";
 import customRenderWithProviders from "../../test-utils/customRenderWithProviders";
 import App from "./App";
 import { handlers } from "../../mocks/handlers";
-import { errorHandlers } from "../../mocks/errorHandlers";
 
 describe("Given an App component", () => {
-  describe("When 'Los Chunguitos' card it's rendered and user clicks in button modify Los Chunguitos", () => {
+  describe("When 'Los Chunguitos' modify page it's rendered and user clicks in button modify Los Chunguitos", () => {
     test("It should show 'New Records' in a heading", async () => {
       customRenderWithProviders(<App />, {
-        initialPath: "/modify",
+        initialPath: `/modify/${modifiedRecordMock._id}`,
         preloadedState: {
           recordsState: {
             records: recordsMock,
-            currentRecord: recordsMock[0],
+            currentRecord: modifiedRecordMock,
           },
         },
       });
@@ -23,7 +22,7 @@ describe("Given an App component", () => {
       server.use(...handlers);
 
       const modifyButton = screen.getByRole("button", {
-        name: "Modify Los chunguitos's Record",
+        name: "Modify",
       });
 
       await userEvent.click(modifyButton);
@@ -36,31 +35,29 @@ describe("Given an App component", () => {
     });
   });
 
-  describe("When 'Los Chunguitos' card it's rendered and user clicks in button modify Los Chunguitos but it fails", () => {
-    test("It should update the feedBack message with 'Impossible to modify 'Dame veneno of Los chunguitos' ⛔😒...'", async () => {
+  describe("When 'Los Chunguitos' modify page it's rendered and user clicks in button modify but the id is invalid", () => {
+    test("It should show 'New Records' in a heading", async () => {
       customRenderWithProviders(<App />, {
-        initialPath: "/modify",
+        initialPath: `/modify/1234`,
         preloadedState: {
           recordsState: {
             records: recordsMock,
-            currentRecord: recordsMock[0],
+            currentRecord: modifiedRecordMock,
           },
         },
       });
 
-      server.use(...errorHandlers);
-
       const modifyButton = screen.getByRole("button", {
-        name: "Modify Los chunguitos's Record",
+        name: "Modify",
       });
 
       await userEvent.click(modifyButton);
 
-      const titleElement = screen.getByText(
-        "Impossible to modify 'Dame veneno of Los chunguitos' ⛔😒...",
-      );
+      const titleElement = await screen.findByRole("heading", {
+        name: "My records",
+      });
 
-      expect(titleElement).toBeInTheDocument();
+      await waitFor(() => expect(titleElement).toBeInTheDocument());
     });
   });
 });

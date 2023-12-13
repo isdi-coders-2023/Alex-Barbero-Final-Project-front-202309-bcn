@@ -21,7 +21,10 @@ interface UseRecordsApiStructure {
   getRecordById: (recordId: string) => Promise<RecordStructure | undefined>;
   deleteRecord: (recordId: string, albumName: string) => Promise<void>;
   addNewRecord: (newRecord: RecordStructureWithoutId) => Promise<void>;
-  modifyRecord: (newRecord: RecordStructure) => Promise<void>;
+  modifyRecord: (
+    newRecord: RecordStructureWithoutId,
+    recordId: string,
+  ) => Promise<void>;
 }
 
 const useRecordsApi = (): UseRecordsApiStructure => {
@@ -36,7 +39,7 @@ const useRecordsApi = (): UseRecordsApiStructure => {
     try {
       dispatch(showLoadingActionCreator());
       const { data } = await axios.get<{ records: RecordStructure[] }>(
-        "/records",
+        `/records`,
       );
 
       dispatch(hideLoadingActionCreator());
@@ -114,7 +117,6 @@ const useRecordsApi = (): UseRecordsApiStructure => {
     async (newRecord: RecordStructureWithoutId): Promise<void> => {
       try {
         dispatch(showLoadingActionCreator());
-
         const {
           data: { record },
         } = await axios.post<{
@@ -144,24 +146,17 @@ const useRecordsApi = (): UseRecordsApiStructure => {
   );
 
   const modifyRecord = useCallback(
-    async (newRecord: RecordStructure): Promise<void> => {
-      const recordData: RecordStructureWithoutId = {
-        albumName: newRecord.albumName,
-        backCover: newRecord.backCover,
-        bandName: newRecord.bandName,
-        cookieImage: newRecord.cookieImage,
-        description: newRecord.description,
-        frontCover: newRecord.frontCover,
-        printImage: newRecord.printImage,
-        trackList: newRecord.trackList,
-      };
-
+    async (
+      recordData: RecordStructureWithoutId,
+      _id: string,
+    ): Promise<void> => {
+      const newRecord: RecordStructure = { ...recordData, _id };
       try {
         dispatch(showLoadingActionCreator());
 
         await axios.patch<{
           record: RecordStructure;
-        }>(`/records/${newRecord._id}`, recordData);
+        }>(`/records/${_id}`, recordData);
 
         dispatch(modifyRecordActionCreator(newRecord));
         dispatch(hideLoadingActionCreator());
@@ -175,6 +170,7 @@ const useRecordsApi = (): UseRecordsApiStructure => {
         navigate("/home");
       } catch (error) {
         dispatch(hideLoadingActionCreator());
+
         dispatch(
           updateToastActionCreator({
             message: `Impossible to modify '${newRecord.albumName} of ${newRecord.bandName}' ⛔😒...`,
