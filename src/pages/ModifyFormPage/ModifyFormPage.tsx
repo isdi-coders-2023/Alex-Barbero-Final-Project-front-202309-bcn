@@ -22,7 +22,9 @@ const ModifyFormPage = () => {
   }, [dispatch, getRecordById, recordId]);
 
   const modifyCurrentRecord = async (newRecord: RecordStructure) => {
-    await modifyRecord(newRecord);
+    if (recordId) {
+      await modifyRecord(newRecord, recordId);
+    }
   };
 
   return (

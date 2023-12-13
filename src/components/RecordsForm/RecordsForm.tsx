@@ -17,7 +17,20 @@ const RecordForm = ({ submitAction, buttonText }: RecordFormProps) => {
   );
 
   useEffect(() => {
-    setNewRecord(currentRecord);
+    scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    setNewRecord({
+      albumName: currentRecord.albumName,
+      backCover: currentRecord.backCover,
+      bandName: currentRecord.bandName,
+      cookieImage: currentRecord.cookieImage,
+      description: currentRecord.description,
+      frontCover: currentRecord.frontCover,
+      printImage: currentRecord.printImage,
+      trackList: currentRecord.trackList,
+    });
   }, [currentRecord]);
 
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
@@ -34,10 +47,6 @@ const RecordForm = ({ submitAction, buttonText }: RecordFormProps) => {
       [event.target.id]: event.target.value,
     }));
   };
-
-  useEffect(() => {
-    scrollTo(0, 0);
-  }, []);
 
   useEffect(() => {
     const newRecordValues = Object.values(newRecord);
@@ -81,7 +90,7 @@ const RecordForm = ({ submitAction, buttonText }: RecordFormProps) => {
       </label>
       <input
         className="form__input"
-        type="text"
+        type="url"
         id="frontCover"
         value={newRecord.frontCover}
         onChange={updateNewRecord}
@@ -93,7 +102,7 @@ const RecordForm = ({ submitAction, buttonText }: RecordFormProps) => {
       <input
         required
         className="form__input"
-        type="text"
+        type="url"
         id="backCover"
         value={newRecord.backCover}
         onChange={updateNewRecord}
@@ -104,7 +113,7 @@ const RecordForm = ({ submitAction, buttonText }: RecordFormProps) => {
       <input
         required
         className="form__input"
-        type="text"
+        type="url"
         id="printImage"
         value={newRecord.printImage}
         onChange={updateNewRecord}
@@ -115,7 +124,7 @@ const RecordForm = ({ submitAction, buttonText }: RecordFormProps) => {
       <input
         required
         className="form__input"
-        type="text"
+        type="url"
         id="cookieImage"
         value={newRecord.cookieImage}
         onChange={updateNewRecord}

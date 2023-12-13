@@ -4,6 +4,7 @@ import RecordsForm from "./RecordsForm";
 import userEvent from "@testing-library/user-event";
 import { errorHandlers } from "../../mocks/errorHandlers";
 import { server } from "../../mocks/node";
+import customRenderWithProviders from "../../test-utils/customRenderWithProviders";
 
 describe("Given a RecordsForm component", () => {
   const actionOnClick = vi.fn();
@@ -27,7 +28,7 @@ describe("Given a RecordsForm component", () => {
     });
 
     test("It should show some empty inputs", async () => {
-      customRender(
+      customRenderWithProviders(
         <RecordsForm
           submitAction={actionOnClick}
           buttonText="Create new Record"
@@ -44,7 +45,7 @@ describe("Given a RecordsForm component", () => {
     test("It should show 'Holita' inside an input", async () => {
       const expectedInputText = "Holita";
 
-      customRender(
+      customRenderWithProviders(
         <RecordsForm
           submitAction={actionOnClick}
           buttonText="Create new Record"
