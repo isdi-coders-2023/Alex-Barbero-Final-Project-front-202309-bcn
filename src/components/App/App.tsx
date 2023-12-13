@@ -18,7 +18,6 @@ const App = (): React.ReactElement => {
       <Header />
       {isLoading && <Loading />}
       <AppStyled>
-        <div className="background" />
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<RecordsPage />} />
