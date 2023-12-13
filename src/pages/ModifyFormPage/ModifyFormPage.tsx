@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import RecordsForm from "../../components/RecordsForm/RecordsForm";
 import useRecordsApi from "../../hooks/useRecordsApi";
 import { updateCurrentRecordActionCreator } from "../../store/feature/records/recordsSlice";
@@ -10,16 +10,19 @@ import PageStyled from "../RecordsPage/RecordsPageStyled";
 const ModifyFormPage = () => {
   const { recordId } = useParams();
   const { getRecordById, modifyRecord } = useRecordsApi();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useMemo(async () => {
     const record = await getRecordById(recordId!);
 
     if (!record) {
+      navigate("/home");
       return;
     }
+
     dispatch(updateCurrentRecordActionCreator(record));
-  }, [dispatch, getRecordById, recordId]);
+  }, [dispatch, getRecordById, navigate, recordId]);
 
   const modifyCurrentRecord = async (newRecord: RecordStructure) => {
     if (recordId) {

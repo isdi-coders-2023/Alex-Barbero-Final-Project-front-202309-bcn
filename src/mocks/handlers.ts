@@ -18,7 +18,7 @@ export const handlers = [
   }),
 
   http.patch(`${apiUrl}/records/1234`, async () => {
-    return HttpResponse.json({ record: undefined });
+    return HttpResponse.error();
   }),
 
   http.post(`${apiUrl}/records`, async () => {

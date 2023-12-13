@@ -36,7 +36,7 @@ describe("Given an App component", () => {
   });
 
   describe("When 'Los Chunguitos' modify page it's rendered and user clicks in button modify but the id is invalid", () => {
-    test.only("It should show 'New Records' in a heading", async () => {
+    test("It should show 'New Records' in a heading", async () => {
       customRenderWithProviders(<App />, {
         initialPath: `/modify/1234`,
         preloadedState: {
@@ -53,7 +53,7 @@ describe("Given an App component", () => {
 
       await userEvent.click(modifyButton);
 
-      const titleElement = screen.getByRole("heading", {
+      const titleElement = await screen.findByRole("heading", {
         name: "My records",
       });
 
