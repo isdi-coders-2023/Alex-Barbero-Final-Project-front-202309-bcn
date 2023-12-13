@@ -1,5 +1,5 @@
 import userEvent from "@testing-library/user-event";
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { server } from "../../mocks/node";
 import { modifiedRecordMock, recordsMock } from "../../mocks/recordsMock";
 import customRenderWithProviders from "../../test-utils/customRenderWithProviders";
@@ -57,7 +57,7 @@ describe("Given an App component", () => {
         name: "My records",
       });
 
-      await expect(titleElement).toBeInTheDocument();
+      await waitFor(() => expect(titleElement).toBeInTheDocument());
     });
   });
 });
