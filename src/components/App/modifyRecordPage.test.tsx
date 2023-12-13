@@ -11,7 +11,7 @@ describe("Given an App component", () => {
   describe("When 'Los Chunguitos' card it's rendered and user clicks in button modify Los Chunguitos", () => {
     test("It should show 'New Records' in a heading", async () => {
       customRenderWithProviders(<App />, {
-        initialPath: "/modify",
+        initialPath: `/modify/${recordsMock[0]._id}`,
         preloadedState: {
           recordsState: {
             records: recordsMock,
@@ -39,7 +39,7 @@ describe("Given an App component", () => {
   describe("When 'Los Chunguitos' card it's rendered and user clicks in button modify Los Chunguitos but it fails", () => {
     test("It should update the feedBack message with 'Impossible to modify 'Dame veneno of Los chunguitos' ⛔😒...'", async () => {
       customRenderWithProviders(<App />, {
-        initialPath: "/modify",
+        initialPath: `/modify/${recordsMock[0]._id}`,
         preloadedState: {
           recordsState: {
             records: recordsMock,

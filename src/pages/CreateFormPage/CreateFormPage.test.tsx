@@ -1,15 +1,15 @@
 import { screen } from "@testing-library/react";
-import customRenderWithProviders from "../../test-utils/customRenderWithProviders";
 import CreateFormPage from "./CreateFormPage";
 import userEvent from "@testing-library/user-event";
 import { store } from "../../store";
+import customRender from "../../test-utils/customRender";
 
 describe("Given a RecordsFormPage", () => {
   describe("When it's rendered", () => {
     test("It should show 'Create new record' in a heading", () => {
       const expectedHeadingText = "Add a new Record";
 
-      customRenderWithProviders(<CreateFormPage />);
+      customRender(<CreateFormPage />);
 
       const headingElement = screen.getByRole("heading", {
         name: expectedHeadingText,
@@ -24,7 +24,7 @@ describe("Given a RecordsFormPage", () => {
       const expectedInputText = "Holita";
       const expectedButtonText = "Create new Record";
 
-      customRenderWithProviders(<CreateFormPage />);
+      customRender(<CreateFormPage />);
 
       const labels = [
         "Band name:",

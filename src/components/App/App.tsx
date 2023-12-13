@@ -23,9 +23,10 @@ const App = (): React.ReactElement => {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<RecordsPage />} />
           <Route path="/add" element={<CreateFormPage />} />
-          <Route path={`/:recordId`} element={<RecordDetailsPage />} />
-          <Route path={`/modify`} element={<ModifyFormPage />} />
+          <Route path={`/details/:recordId`} element={<RecordDetailsPage />} />
+          <Route path={`/modify/:recordId`} element={<ModifyFormPage />} />
           <Route path="/not-found" element={<NotFoundPage />} />
+          <Route path="/*" element={<NotFoundPage />} />
         </Routes>
         <Toast />
         <div className="footer" />

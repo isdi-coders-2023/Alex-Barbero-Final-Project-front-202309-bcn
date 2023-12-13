@@ -35,7 +35,7 @@ const RecordDetailsPage = () => {
 
   const modifyCurrentRecord = () => {
     dispatch(updateCurrentRecordActionCreator(currentRecord));
-    navigate("/modify");
+    navigate(`/modify/${currentRecord._id}`);
   };
 
   return (

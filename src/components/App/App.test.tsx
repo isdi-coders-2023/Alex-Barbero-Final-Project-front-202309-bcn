@@ -145,7 +145,6 @@ describe("Given an App component", () => {
   describe("When 'Los Chunguitos' Details page is rendered and user clicks in button modify Los Chunguitos", () => {
     test("It should show 'Modify Record' in a heading", async () => {
       const expectedHeadingText = "Modify Record";
-      server.use(...handlers);
 
       customRenderWithProviders(<App />, {
         initialPath: "/home",
@@ -160,9 +159,7 @@ describe("Given an App component", () => {
       const detailButtonElements = screen.getAllByAltText("info On");
       await userEvent.click(detailButtonElements[0]);
 
-      const modifyButton = screen.getByRole("button", {
-        name: "modifyRecord",
-      });
+      const modifyButton = screen.getByAltText("modifyRecord");
       await userEvent.click(modifyButton);
 
       const expectedHeadingElement = screen.getByRole("heading", {

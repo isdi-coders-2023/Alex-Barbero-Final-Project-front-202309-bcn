@@ -12,13 +12,13 @@ import React from "react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ThemeProvider theme={mainTheme}>
-        <BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
+        <ThemeProvider theme={mainTheme}>
           <GlobalStyle />
           <App />
-        </BrowserRouter>
-      </ThemeProvider>
-    </Provider>
+        </ThemeProvider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
 );
